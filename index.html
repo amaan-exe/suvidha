@@ -6,13 +6,14 @@
     <title>Suvidha Travels - Best Tour & Travel Agency in Patna</title>
 
     <!-- SEO -->
-    <meta name="description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, and 24/7 support." />
+    <meta name="description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, and 24/7 support. Based in Patna, Bihar." />
     <meta property="og:title" content="Suvidha Travels" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200" />
 
     <!-- Tailwind + Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- React -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -35,16 +36,16 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
 
-        /* Particles */
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.25; }
+        /* Particles - Optimized: Reduced count for performance */
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.15; will-change: transform; }
 
-        /* Animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        /* Animations - Added will-change for smoother perf */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; will-change: opacity, transform; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; will-change: opacity, transform; }
         .lazy-load.visible { opacity: 1; transform: translateY(0); }
 
-        .stat-item { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s ease-out forwards; }
+        .stat-item { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s ease-out forwards; will-change: opacity, transform; }
         .stat-item:nth-child(1) { animation-delay: 0.2s; }
         .stat-item:nth-child(2) { animation-delay: 0.4s; }
         .stat-item:nth-child(3) { animation-delay: 0.6s; }
@@ -54,21 +55,89 @@
         #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 60; transition: width 0.15s linear; }
 
         .carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
-        .carousel-track { display: flex; height: 100%; transition: transform 1s ease-in-out; }
+        .carousel-track { display: flex; height: 100%; transition: transform 1s ease-in-out; will-change: transform; }
         .carousel-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
-        .carousel-slide video { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-slide video { width: 100%; height: 100%; object-fit: cover;} /* Optimized video loading */
         .carousel-slide::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.3); z-index: 1; }
         #dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; transition: all .3s; }
         #dots button.active { background: #1392ec; transform: scale(1.2); }
 
-        .dest-card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .dest-card .details { opacity: 0; transform: translateY(20px); transition: all 0.3s; }
-        .dest-card:hover .details { opacity: 1; transform: translateY(0); }
+        .dest-card:hover, .pkg-card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+        .dest-card .details, .pkg-card .details { opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+        .dest-card:hover .details, .pkg-card:hover .details { opacity: 1; transform: translateY(0); }
 
-        /* Typing Effect Styles */
+        /* Tray Styles - Smooth scroll with snap, mobile-optimized */
+        .tray { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 1rem; 
+            padding: 1rem 0; 
+            scrollbar-width: thin; 
+            scrollbar-color: #1392ec transparent; 
+            scroll-snap-type: x mandatory; 
+            scroll-behavior: smooth; 
+            -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+        }
+        .tray::-webkit-scrollbar { height: 8px; }
+        .tray::-webkit-scrollbar-track { background: transparent; }
+        .tray::-webkit-scrollbar-thumb { background: #1392ec; border-radius: 4px; }
+        .tray-item { flex-shrink: 0; scroll-snap-align: start; will-change: transform; }
+
+        /* Navigation Arrows for Trays */
+        .tray-nav { position: relative; }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #1392ec;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+        .nav-arrow:disabled { opacity: 0.5; cursor: not-allowed; transform: translateY(-50%) scale(0.9); }
+        .nav-left { left: -20px; }
+        .nav-right { right: -20px; }
+
+        /* Mobile Responsiveness: Hide arrows on very small screens, adjust sizes */
+        @media (max-width: 640px) {
+            .tray-item { min-width: calc(100% - 1rem); } /* Full width on mobile for packages/dests */
+            .nav-arrow { display: none; } /* Hide arrows on mobile, rely on touch scroll */
+            .hero h1 { 
+                font-size: 1.75rem !important; 
+                line-height: 1.3 !important;
+                max-width: 100% !important;
+            }
+            .hero p { font-size: 1rem; }
+            .hero .mt-8 .flex { flex-direction: column; gap: 1rem; }
+            .hero .mt-8 button { width: 100%; max-width: 280px; }
+            .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 2rem; }
+            .why-grid { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; gap: 2rem; }
+            /* Typing animation optimization for mobile: allow wrapping to prevent overflow */
+            .typing-text {
+                white-space: normal !important;
+                overflow: visible !important;
+                word-wrap: break-word;
+            }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .tray-item { width: 280px; } /* Medium screens */
+        }
+
+        /* Typing Effect Styles - Optimized for mobile with faster blink */
         .typing-text {
             border-right: 2px solid #fff;
-            animation: blink 1s infinite;
+            animation: blink 0.8s infinite; /* Slightly faster blink on mobile */
             white-space: nowrap;
             overflow: hidden;
         }
@@ -85,6 +154,79 @@
             0%, 50% { border-color: #fff; }
             51%, 100% { border-color: transparent; }
         }
+
+        /* Image placeholders for faster perceived load */
+        img { background: #f0f0f0; } /* Light gray placeholder */
+
+        /* About Us Section Styles */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 1024px) {
+            .about-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .about-img {
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+            overflow: hidden;
+        }
+
+        /* Contact/Map Styles */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .map-container {
+            position: relative;
+            height: 24rem;
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+        }
+
+        /* Redesigned Footer */
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        @media (min-width: 768px) {
+            .footer-top {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .footer-top {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgb(55 65 81);
+        }
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 overflow-x-hidden">
@@ -93,7 +235,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // Particles
+        // Particles - Optimized: Fewer particles
         function Particles() {
             const canvas = useRef(null);
             useEffect(() => {
@@ -104,7 +246,7 @@
                     canvas.current.width = window.innerWidth;
                     canvas.current.height = window.innerHeight;
                 });
-                const particles = Array.from({length: 25}, () => ({
+                const particles = Array.from({length: 15}, () => ({ // Reduced from 25
                     x: Math.random() * canvas.current.width,
                     y: Math.random() * canvas.current.height,
                     vx: (Math.random() - 0.5) * 0.5,
@@ -127,7 +269,7 @@
                 };
                 draw();
             }, []);
-            return <canvas ref={canvas} className="fixed inset-0 pointer-events-none z-0 opacity-25"/>;
+            return <canvas ref={canvas} className="fixed inset-0 pointer-events-none z-0 opacity-15"/>;
         }
 
         // Animated Stat Item
@@ -162,7 +304,7 @@
             return (
                 <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
                     <div className="container mx-auto px-4">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center stats-grid">
                             <StatItem icon="public" target={345} label="Tours" />
                             <StatItem icon="wb_sunny" target={438} label="Holidays" />
                             <StatItem icon="hotel" target={526} label="Hotels" />
@@ -178,7 +320,7 @@
                 <header className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
                     <div className="container mx-auto px-4 flex justify-between items-center h-20">
                         <div className="flex items-center gap-3">
-                            <img src="images/logo.jpg" alt="Logo" className="h-12 w-12 rounded-full border-2 border-primary shadow-lg object-cover"/>
+                            <img src="images/logo.jpg" alt="Logo" className="h-12 w-12 rounded-full border-2 border-primary shadow-lg object-cover" loading="lazy"/>
                             <h2 className="text-xl font-bold">Suvidha Travels</h2>
                         </div>
                         <nav className="hidden md:flex gap-8 text-sm font-medium">
@@ -206,36 +348,36 @@
             const [phraseIndex, setPhraseIndex] = useState(0);
             const videos = ['videos/pr1.mp4','videos/pr2.mp4','videos/pr3.mp4','videos/pr4.mp4'];
             const videoRefs = useRef([]);
+            const [isMobile, setIsMobile] = useState(window.innerWidth < 641);
 
-            // Define your 4 phrases here (original + 3 extras)
             const phrases = [
                 'Explore The World With Suvidha Travels',
-                'Discover Hidden Gems With Suvidha Travels',
-                'Adventure Awaits With Suvidha Travels',
-                'Your Journey Starts With Suvidha Travels'
+                'Ease Your Travel Experience ',
+                'Travel Bhi , Masti Bhi',
+                'Safar ka Maza with Suvidha Travels '
             ];
 
-            // Typing animation logic
             useEffect(() => {
-                let typeSpeed = 100; // ms per char
-                let deleteSpeed = 80; // ms per char when deleting
-                let pauseTime = 2000; // ms to pause after full phrase (adjust for ~5s gap overall)
+                const handleResize = () => setIsMobile(window.innerWidth < 641);
+                window.addEventListener('resize', handleResize);
+                return () => window.removeEventListener('resize', handleResize);
+            }, []);
+
+            useEffect(() => {
+                let typeSpeed = isMobile ? 30 : 45;
+                let deleteSpeed = isMobile ? 35 : 50;
+                let pauseTime = isMobile ? 1500 : 2000;
 
                 const handleType = () => {
                     const fullText = phrases[phraseIndex];
-                    const speed = isDeleting ? deleteSpeed : typeSpeed;
-
                     if (!isDeleting && currentText === fullText) {
-                        // Pause after typing full phrase
                         setTimeout(() => setIsDeleting(true), pauseTime);
+                        return;
                     } else if (isDeleting && currentText === '') {
-                        // Move to next phrase after deletion
                         setIsDeleting(false);
                         setPhraseIndex((prev) => (prev + 1) % phrases.length);
-                        // Brief transition pause for ~5s difference feel
-                        setTimeout(() => {}, 500);
+                        return;
                     } else {
-                        // Type or delete next char
                         setCurrentText((prev) =>
                             isDeleting
                                 ? prev.substring(0, prev.length - 1)
@@ -244,13 +386,13 @@
                     }
                 };
 
+                const delay = isDeleting ? deleteSpeed : typeSpeed;
                 if (phrases.length > 0) {
-                    const timer = setTimeout(handleType, isDeleting ? deleteSpeed : typeSpeed);
+                    const timer = setTimeout(handleType, delay);
                     return () => clearTimeout(timer);
                 }
-            }, [currentText, isDeleting, phraseIndex, phrases]);
+            }, [currentText, isDeleting, phraseIndex, phrases, isMobile]);
 
-            // Video carousel logic
             useEffect(() => {
                 const id = setInterval(() => setIdx(i => (i+1)%videos.length), 5000);
                 return () => clearInterval(id);
@@ -261,12 +403,12 @@
             }, [idx]);
 
             return (
-                <section className="relative h-screen min-h-[600px] overflow-hidden">
+                <section className="relative h-screen min-h-[600px] overflow-hidden hero">
                     <div className="carousel">
                         <div className="carousel-track" style={{transform:`translateX(-${idx*100}%)`}}>
                             {videos.map((src,i) => (
                                 <div key={i} className="carousel-slide">
-                                    <video ref={el=>videoRefs.current[i]=el} src={src} muted loop playsInline />
+                                    <video ref={el=>videoRefs.current[i]=el} src={src} muted loop playsInline preload="next" />
                                 </div>
                             ))}
                         </div>
@@ -277,12 +419,9 @@
                             {currentText !== phrases[phraseIndex] || isDeleting ? '' : '|'}
                         </h1>
                         <p className="mt-4 text-lg fade-in visible">Your next unforgettable journey begins here.</p>
-                        <div className="mt-8 w-full max-w-2xl">
-                            <div className="flex items-center bg-white/20 backdrop-blur-md rounded-full h-14 px-4 shadow-lg">
-                                <span className="material-symbols-outlined text-gray-300 pr-3">search</span>
-                                <input className="bg-transparent flex-grow text-white placeholder-gray-300 focus:outline-none" placeholder="Where to?" />
-                                <button className="bg-primary text-white rounded-full px-6 py-2 font-bold">Explore</button>
-                            </div>
+                        <div className="mt-8 flex gap-4">
+                            <button className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors">Explore Packages</button>
+                            <button className="px-8 py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-primary transition-colors">Contact Us</button>
                         </div>
                     </div>
                     <div id="dots" className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -293,32 +432,51 @@
         }
 
         function Destinations() {
+            const trayRef = useRef(null);
             const dests = [
                 {name:"Bali",img:"https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200"},
                 {name:"Dubai",img:"https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200"},
                 {name:"Paris",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
                 {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-                {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-                {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
                 {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-                {name:"Switzerland",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"},
-                {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-                {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-                {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
+                {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
+                {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
+                {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
+                {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
                 {name:"Switzerland",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"}
+            ]; // Reduced duplicates for perf
 
-            ];
+            const scrollLeft = () => {
+                if (trayRef.current) {
+                    trayRef.current.scrollBy({ left: -220, behavior: 'smooth' });
+                }
+            };
+
+            const scrollRight = () => {
+                if (trayRef.current) {
+                    trayRef.current.scrollBy({ left: 220, behavior: 'smooth' });
+                }
+            };
+
             return (
                 <section className="py-20 bg-background-light dark:bg-background-dark">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-10 fade-in">Domestic Destinations</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                            {dests.map((d,i)=>(
-                                <div key={i} className="dest-card bg-cover bg-center rounded-lg aspect-[3/4] flex flex-col justify-end p-4 text-white shadow-lg relative overflow-hidden lazy-load" style={{backgroundImage:`linear-gradient(to top,rgba(0,0,0,0.7),transparent),url(${d.img})`}}>
-                                    <p className="text-lg font-bold relative z-10">{d.name}</p>
-                                    <button className="details mt-2 px-4 py-2 bg-white text-black rounded-full text-sm font-bold relative z-10">View Details</button>
-                                </div>
-                            ))}
+                        <h2 className="text-3xl font-bold text-center mb-10 fade-in visible">Domestic Destinations</h2>
+                        <div className="tray-nav relative">
+                            <div ref={trayRef} className="tray dest-tray">
+                                {dests.map((d,i)=>(
+                                    <div key={i} className="dest-card tray-item bg-cover bg-center rounded-lg flex flex-col justify-end p-4 text-white shadow-lg relative overflow-hidden lazy-load visible" style={{backgroundImage:`linear-gradient(to top,rgba(0,0,0,0.7),transparent),url(${d.img})`, width: '200px', height: '280px'}}>
+                                        <p className="text-lg font-bold relative z-10">{d.name}</p>
+                                        <button className="details mt-2 px-4 py-2 bg-white text-black rounded-full text-sm font-bold relative z-10">View Details</button>
+                                    </div>
+                                ))}
+                            </div>
+                            <button onClick={scrollLeft} className="nav-arrow nav-left">
+                                <span className="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <button onClick={scrollRight} className="nav-arrow nav-right">
+                                <span className="material-symbols-outlined">chevron_right</span>
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -326,32 +484,54 @@
         }
 
         function Packages() {
+            const trayRef = useRef(null);
             const pkgs = [
                 {title:"Luxury Maldives Escape",duration:"7 Nights / 8 Days",desc:"Overwater villa with all meals",price:"$2,499",img:"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"},
                 {title:"Romantic Paris Getaway",duration:"5 Nights / 6 Days",desc:"City of love with river cruise",price:"$1,800",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
-                {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"images/himalaya.jpg"},
-                {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"images/himalaya.jpg"},
-                {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"images/himalaya.jpg"}
+                {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200"}, // Replaced local img with Unsplash for consistency
+                {title:"Dubai Desert Safari",duration:"4 Nights / 5 Days",desc:"Thrilling adventures in the dunes",price:"$1,200",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
+                {title:"Swiss Alps Retreat",duration:"6 Nights / 7 Days",desc:"Scenic trains and chocolate tours",price:"$2,100",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"}
             ];
+
+            const scrollLeft = () => {
+                if (trayRef.current) {
+                    trayRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+                }
+            };
+
+            const scrollRight = () => {
+                if (trayRef.current) {
+                    trayRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+                }
+            };
+
             return (
                 <section className="py-20 bg-white dark:bg-gray-900">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-10 fade-in">International Packages</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {pkgs.map((p,i)=>(
-                                <div key={i} className="bg-background-light dark:bg-background-dark rounded-lg shadow-lg overflow-hidden flex flex-col hover:-translate-y-2 transition-transform lazy-load">
-                                    <img src={p.img} alt={p.title} className="w-full h-56 object-cover"/>
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <h3 className="text-xl font-bold">{p.title}</h3>
-                                        <p className="text-sm text-gray-500 mt-1">{p.duration}</p>
-                                        <p className="mt-4 flex-grow">{p.desc}</p>
-                                        <div className="mt-6 flex justify-between items-center">
-                                            <p className="text-2xl font-bold text-primary">{p.price}<span className="text-sm font-normal text-gray-500"> / person</span></p>
-                                            <button className="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-primary/90">Book Now</button>
+                        <h2 className="text-3xl font-bold text-center mb-10 fade-in visible">International Packages</h2>
+                        <div className="tray-nav relative">
+                            <div ref={trayRef} className="tray pkg-tray">
+                                {pkgs.map((p,i)=>(
+                                    <div key={i} className="pkg-card tray-item bg-background-light dark:bg-background-dark rounded-lg shadow-lg overflow-hidden flex flex-col hover:-translate-y-2 transition-all duration-300 lazy-load visible" style={{width: '320px', height: 'fit-content'}}>
+                                        <img src={p.img} alt={p.title} className="w-full h-48 object-cover" loading="lazy"/>
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <h3 className="text-xl font-bold">{p.title}</h3>
+                                            <p className="text-sm text-gray-500 mt-1">{p.duration}</p>
+                                            <p className="mt-4 flex-grow text-gray-600 dark:text-gray-400">{p.desc}</p>
+                                            <div className="mt-6 flex justify-between items-center">
+                                                <p className="text-2xl font-bold text-primary">{p.price}<span className="text-sm font-normal text-gray-500"> / person</span></p>
+                                                <button className="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors">Book Now</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                            <button onClick={scrollLeft} className="nav-arrow nav-left">
+                                <span className="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <button onClick={scrollRight} className="nav-arrow nav-right">
+                                <span className="material-symbols-outlined">chevron_right</span>
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -360,18 +540,18 @@
 
         function WhyChoose() {
             const items = [
-                {icon:"map",title:"Expert Planners",desc:"Personalized itineraries"},
-                {icon:"sell",title:"Best Price",desc:"No hidden fees"},
-                {icon:"public",title:"Global Network",desc:"Trusted partners worldwide"},
-                {icon:"support_agent",title:"24/7 Support",desc:"Always here for you"}
+                {icon:"map",title:"Expert Planners",desc:"We have a team of travel consultants in Patna that provides personalized recommendations as well as great insight that can make your journey memorable"},
+                {icon:"sell",title:"Customize Package",desc:"Our Customized Packages are created as per person requirements, budgets, and no of people, schedule & more"},
+                {icon:"public",title:"Affordable Pricing",desc:"We offer competitive rates on flights, hotels, and tour packages to ensure you get the best value"},
+                {icon:"support_agent",title:"24/7 Support",desc:"Our dedicated support team is available around the clock to assist you with any queries or last-minute changes"}
             ];
             return (
                 <section className="py-20 bg-background-light dark:bg-background-dark">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-12 fade-in">Why Choose Suvidha Travels?</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center">
+                        <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Why Choose Suvidha Travels?</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center why-grid">
                             {items.map((f,i)=>(
-                                <div key={i} className="lazy-load">
+                                <div key={i} className="lazy-load visible">
                                     <div className="bg-primary/10 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                                         <span className="material-symbols-outlined text-primary text-4xl">{f.icon}</span>
                                     </div>
@@ -379,6 +559,26 @@
                                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{f.desc}</p>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function AboutUs() {
+            return (
+                <section className="py-20 bg-white dark:bg-gray-900">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">About Suvidha Travels</h2>
+                        <div className="about-grid">
+                            <div className="order-2 lg:order-1">
+                                <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 fade-in visible">Based in the heart of Patna, Bihar, Suvidha Travels has been your trusted partner in crafting unforgettable journeys since 2010. Our passionate team of travel experts specializes in personalized itineraries that blend adventure, luxury, and cultural immersion. From the serene hills of Kashmir to the vibrant streets of Dubai, we ensure every trip is seamless and extraordinary.</p>
+                                <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 fade-in visible">With a commitment to sustainability and local empowerment, we partner with communities worldwide to create meaningful experiences. Join thousands of satisfied travelers who have discovered the world with us.</p>
+                                <button className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors fade-in visible">Learn More</button>
+                            </div>
+                            <div className="order-1 lg:order-2">
+                                <img src="images/poster.webp" alt="About Suvidha Travels" className="about-img w-full h-full object-cover lazy-load visible" loading="lazy" />
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -395,9 +595,9 @@
             ];
             useEffect(()=>{const id=setInterval(()=>setIdx(i=>(i+1)%testimonials.length),5000);return()=>clearInterval(id);},[]);
             return (
-                <section className="py-20 bg-white dark:bg-gray-900">
+                <section className="py-20 bg-background-light dark:bg-background-dark">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-10 fade-in">What Our Travelers Say</h2>
+                        <h2 className="text-3xl font-bold text-center mb-10 fade-in visible">What Our Travelers Say</h2>
                         <div className="max-w-3xl mx-auto relative h-64 overflow-hidden">
                             {testimonials.map((t,i)=>(
                                 <div key={i} className={`absolute inset-0 transition-all duration-500 ${i===idx?'opacity-100':'opacity-0'}`}>
@@ -416,36 +616,117 @@
             );
         }
 
-        function Newsletter() {
-            const [email,setEmail]=useState('');
-            const [sent,setSent]=useState(false);
-            const submit=e=>{e.preventDefault(); if(email){setSent(true);setTimeout(()=>{setSent(false);setEmail('');},3000);}}
+        function Contact() {
             return (
-                <section className="py-20 bg-background-light dark:bg-background-dark">
-                    <div className="container mx-auto px-4 text-center">
-                        <h2 className="text-3xl font-bold mb-4 fade-in">Stay Updated with Wanderlust</h2>
-                        <p className="mb-8 fade-in">Subscribe for exclusive deals</p>
-                        <form onSubmit={submit} className="max-w-md mx-auto relative">
-                            <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Your email" required className="w-full px-6 py-4 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-background-dark"/>
-                            <button type="submit" className="absolute right-2 top-2 px-6 py-2 bg-primary text-white rounded-full font-bold">Subscribe</button>
-                            {sent && <span className="absolute inset-0 flex items-center justify-center text-green-500 font-bold">Sent!</span>}
-                        </form>
+                <section className="py-20 bg-white dark:bg-gray-900">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Based in Patna - Get in Touch</h2>
+                        <div className="contact-grid">
+                            <div>
+                                <h3 className="text-2xl font-bold mb-4">Our Office</h3>
+                                <p className="text-gray-600 dark:text-gray-400 mb-4">Suvidha Travels<br />Fraser Road, Patna, Bihar 800001<br />India</p>
+                                <p className="text-gray-600 dark:text-gray-400 mb-4">Phone: +91 98765 43210<br />Email: info@suvidha.com</p>
+                            </div>
+                            <div className="map-container">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.3096636778637!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e1!3m2!1sen!2sin!4v1763046246896!5m2!1sen!2sin"
+                                    width="100%"
+                                    height="100%"
+                                    style={{border:0}}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
                     </div>
                 </section>
             );
         }
 
+        
+
         function Footer() {
             return (
                 <footer className="bg-gray-900 text-white py-16">
                     <div className="container mx-auto px-4">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                            <div><h3 className="text-lg font-bold">Suvidha Travels</h3><p className="mt-4 text-sm text-gray-400">Unforgettable experiences since 2010.</p></div>
-                            <div><h4 className="font-semibold uppercase">Quick Links</h4><ul className="mt-4 space-y-2 text-sm text-gray-400"><li><a href="#" className="hover:text-white">Home</a></li><li><a href="#" className="hover:text-white">Destinations</a></li></ul></div>
-                            <div><h4 className="font-semibold uppercase">Contact</h4><ul className="mt-4 space-y-2 text-sm text-gray-400"><li>info@suvidha.com</li><li>+91 98765 43210</li></ul></div>
-                            <div><h4 className="font-semibold uppercase">Follow</h4><div className="flex gap-4 mt-4"><a href="#" className="hover:text-primary">IG</a><a href="#" className="hover:text-primary">YT</a><a href="#" className="hover:text-primary">FB</a></div></div>
+                        <div className="footer-top">
+                            <div>
+                                <h3 className="text-lg font-bold mb-4">Suvidha Travels</h3>
+                                <p className="text-sm text-gray-400 mb-4">Based in Patna, Bihar. Unforgettable experiences since 2010. Your journey, our passion.</p>
+                                <div className="flex gap-4">
+                                    <a
+                                        href="https://www.instagram.com/suvidhatravels_//"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"
+                                        aria-label="Visit our Instagram page"
+                                    >
+                                        <i className="fab fa-instagram"></i>
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/suvidha-travels-841a15184//"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"
+                                        aria-label="Visit our Instagram page"
+                                    >
+                                        <i className="fab fa-linkedin"></i>
+                                    </a>
+                                    <a
+                                        href="https://x.com/SuvidhaTravels"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"
+                                        aria-label="Visit our Instagram page"
+                                    >
+                                        <i className="fa-brands fa-twitter"></i>
+                                    </a>
+                                    <a
+                                        href="https://www.facebook.com/suvidhatravelspatna/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"
+                                        aria-label="Visit our Instagram page"
+                                    >
+                                        <i className="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold uppercase mb-4">Quick Links</h4>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">Destinations</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">Packages</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold uppercase mb-4">Services</h4>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><a href="#" className="hover:text-white transition-colors">Custom Tours</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">Visa Assistance</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">Car Rentals</a></li>
+                                    <li><a href="#" className="hover:text-white transition-colors">Hotel Bookings</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold uppercase mb-4">Contact Info</h4>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li>Fraser Road, Patna, Bihar 800001</li>
+                                    <li>info@suvidha.com</li>
+                                    <li>+91 98765 43210</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="mt-12 text-center text-sm text-gray-500">© 2024 Suvidha Travels. All Rights Reserved.</div>
+                        <div className="footer-bottom">
+                            <p className="text-sm text-gray-500">© 2024 Suvidha Travels. All Rights Reserved.</p>
+                            <div className="flex gap-4 text-sm text-gray-500">
+                                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                            </div>
+                        </div>
                     </div>
                 </footer>
             );
@@ -476,7 +757,7 @@
 
             useEffect(()=>{
                 const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}}),{threshold:0.1});
-                document.querySelectorAll('.fade-in, .lazy-load').forEach(el=>obs.observe(el));
+                document.querySelectorAll('.fade-in:not(.visible), .lazy-load:not(.visible)').forEach(el=>obs.observe(el)); // Avoid duplicates
             },[]);
 
             return (
@@ -490,8 +771,10 @@
                         <Destinations/>
                         <Packages/>
                         <WhyChoose/>
+                        <AboutUs/>
                         <Testimonials/>
-                        <Newsletter/>
+                        <Contact/>
+                        
                     </main>
                     <Footer/>
                     <BackToTop/>
