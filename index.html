@@ -59,7 +59,7 @@
         .carousel-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
         .carousel-slide video { width: 100%; height: 100%; object-fit: cover;} /* Optimized video loading */
         .carousel-slide::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.3); z-index: 1; }
-        #dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; transition: all .3s; }
+        #dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: all-scroll; transition: all .3s; }
         #dots button.active { background: #1392ec; transform: scale(1.2); }
 
         .dest-card:hover, .pkg-card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.3s ease; }
@@ -97,7 +97,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
+            cursor: all-scroll;
             z-index: 10;
             transition: all 0.3s ease;
             font-size: 20px;
@@ -105,7 +105,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .nav-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
-        .nav-arrow:disabled { opacity: 0.5; cursor: not-allowed; transform: translateY(-50%) scale(0.9); }
+        .nav-arrow:disabled { opacity: 0.5; cursor: all-scroll; transform: translateY(-50%) scale(0.9); }
         .nav-left { left: -20px; }
         .nav-right { right: -20px; }
 
@@ -319,15 +319,21 @@
             return (
                 <header className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
                     <div className="container mx-auto px-4 flex justify-between items-center h-20">
-                        <div className="flex items-center gap-3">
-                            <img src="images/logo.jpg" alt="Logo" className="h-12 w-12 rounded-full border-2 border-primary shadow-lg object-cover" loading="lazy"/>
-                            <h2 className="text-xl font-bold">Suvidha Travels</h2>
-                        </div>
+                        <a href="index.html" className="flex items-center gap-3">
+                        <img
+                        src="images/logo.jpg"
+                        alt="Logo"
+                        className="h-12 w-12 rounded-full border-2 border-primary shadow-lg object-cover"
+                        loading="lazy"
+                        />
+                        <h2 className="text-xl font-bold">Suvidha Travels</h2>
+                        </a>
                         <nav className="hidden md:flex gap-8 text-sm font-medium">
-                            <a href="#" className="hover:text-primary">Home</a>
-                            <a href="#" className="hover:text-primary">Destinations</a>
+                            <a href="index.html" className="hover:text-primary">Home</a>
+                            <a href="#" className="hover:text-primary">Services</a>
                             <a href="#" className="hover:text-primary">Packages</a>
                             <a href="#" className="hover:text-primary">About</a>
+                            <a href="#" className="hover:text-primary">Gallery</a>
                             <a href="#" className="hover:text-primary">Contact</a>
                         </nav>
                         <div className="flex items-center gap-4">
@@ -434,7 +440,7 @@
         function Destinations() {
             const trayRef = useRef(null);
             const dests = [
-                {name:"Bali",img:"https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200"},
+                {name:"Bali",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
                 {name:"Dubai",img:"https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200"},
                 {name:"Paris",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
                 {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
@@ -577,7 +583,7 @@
                                 <button className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors fade-in visible">Learn More</button>
                             </div>
                             <div className="order-1 lg:order-2">
-                                <img src="images/poster.webp" alt="About Suvidha Travels" className="about-img w-full h-full object-cover lazy-load visible" loading="lazy" />
+                                <img src="images/tposter.webp" alt="About Suvidha Travels" className="about-img w-full h-full object-cover lazy-load visible" loading="lazy" />
                             </div>
                         </div>
                     </div>
@@ -625,7 +631,7 @@
                             <div>
                                 <h3 className="text-2xl font-bold mb-4">Our Office</h3>
                                 <p className="text-gray-600 dark:text-gray-400 mb-4">Suvidha Travels<br />Fraser Road, Patna, Bihar 800001<br />India</p>
-                                <p className="text-gray-600 dark:text-gray-400 mb-4">Phone: +91 98765 43210<br />Email: info@suvidha.com</p>
+                                <p className="text-gray-600 dark:text-gray-400 mb-4">Phone: +91 98765 43210<br />Email: suvidhatour@gmail.com</p>
                             </div>
                             <div className="map-container">
                                 <iframe
@@ -715,7 +721,7 @@
                                 <h4 className="font-semibold uppercase mb-4">Contact Info</h4>
                                 <ul className="space-y-2 text-sm text-gray-400">
                                     <li>Fraser Road, Patna, Bihar 800001</li>
-                                    <li>info@suvidha.com</li>
+                                    <li>suvidhatour@gmail.com</li>
                                     <li>+91 98765 43210</li>
                                 </ul>
                             </div>
