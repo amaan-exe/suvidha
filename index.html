@@ -473,7 +473,7 @@
                                 {dests.map((d,i)=>(
                                     <div key={i} className="dest-card tray-item bg-cover bg-center rounded-lg flex flex-col justify-end p-4 text-white shadow-lg relative overflow-hidden lazy-load visible" style={{backgroundImage:`linear-gradient(to top,rgba(0,0,0,0.7),transparent),url(${d.img})`, width: '200px', height: '280px'}}>
                                         <p className="text-lg font-bold relative z-10">{d.name}</p>
-                                        <button className="details mt-2 px-4 py-2 bg-white text-black rounded-full text-sm font-bold relative z-10">View Details</button>
+                                        <a href={`pages.html?destination=${d.name.toLowerCase()}`} className="details mt-2 px-4 py-2 bg-white text-black rounded-full text-sm font-bold relative z-10 block text-center">View Details</a>
                                     </div>
                                 ))}
                             </div>
@@ -671,7 +671,7 @@
                                         <i className="fab fa-instagram"></i>
                                     </a>
                                     <a
-                                        href="https://www.linkedin.com/in/suvidha-travels-841a15184//"
+                                        href="https://www.linkedin.com/in/suvidha-travels-841a15184"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"

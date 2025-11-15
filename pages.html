@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title id="page-title">Destination Tour | Suvidha Travels</title>
+
+    <!-- SEO -->
+    <meta id="page-description" name="description" content="Discover amazing destinations with Suvidha Travels." />
+    <meta id="og-title" property="og:title" content="Destination Tour | Suvidha Travels" />
+    <meta id="og-image" property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" />
+
+    <!-- Tailwind + Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { 
+                        primary: "#1392ec", 
+                        "background-light": "#f6f7f8", 
+                        "background-dark": "#101a22",
+                        "voyage-blue": "#87CEEB",
+                        "voyage-orange": "#FFA500",
+                        "voyage-sand": "#F5F5DC",
+                        "voyage-dark": "#36454F",
+                        "voyage-tan": "#D2B48C"
+                    },
+                    fontFamily: { 
+                        display: ["Plus Jakarta Sans", "sans-serif"], 
+                        oregano: ["Oregano", "cursive"],
+                        sans: ["Poppins", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
+
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; will-change: opacity, transform; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; will-change: opacity, transform; }
+        .lazy-load.visible { opacity: 1; transform: translateY(0); }
+
+        /* Accordion Styles */
+        .accordion-summary { cursor: pointer; }
+        .accordion-icon { transition: transform 0.2s ease-in-out; }
+        .accordion-open .accordion-icon { transform: rotate(90deg); }
+
+        /* Image placeholders */
+        img { background: #f0f0f0; }
+
+        /* Scrollbar */
+        #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 60; transition: width 0.15s linear; }
+    </style>
+</head>
+<body class="bg-voyage-sand dark:bg-voyage-dark text-voyage-dark dark:text-voyage-sand overflow-x-hidden font-sans">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // Dynamic tour data template
+        const tourData = {
+            kashmir: {
+                title: "Enchanting Kashmir Tour",
+                heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200",
+                description: "Discover the paradise on earth with snow-capped mountains, lush valleys, Dal Lake houseboats, and serene Mughal gardens. Perfect for a romantic or family getaway.",
+                duration: "7 Days / 6 Nights",
+                price: "$1,200",
+                highlights: [
+                    { icon: "terrain", title: "Dal Lake Shikara Ride", desc: "Glide through the iconic lake on traditional boats." },
+                    { icon: "local_florist", title: "Tulips Garden", desc: "Wander through vibrant blooms in spring." },
+                    { icon: "wb_sunny", title: "Pahalgam Meadows", desc: "Picnic amid betaab valley's lush greenery." },
+                    { icon: "local_hotel", title: "Houseboat Stay", desc: "Luxurious overnight on the water." }
+                ],
+                days: [
+                    { 
+                        title: "Day 1: Arrival in Srinagar", 
+                        content: "Arrive at Srinagar Airport, transfer to houseboat on Dal Lake. Enjoy a welcome shikara ride and Kashmiri dinner. (Meals: Dinner)" 
+                    },
+                    { 
+                        title: "Day 2: Mughal Gardens Tour", 
+                        content: "Visit Nishat Bagh, Shalimar Bagh, and Chashme Shahi. Afternoon free for shopping at Boulevard Road. (Meals: Breakfast, Lunch)" 
+                    },
+                    { 
+                        title: "Day 3: Excursion to Gulmarg", 
+                        content: "Drive to Gulmarg for gondola ride to Apharwat. Explore meadows and enjoy pony rides. (Meals: Breakfast, Lunch, Dinner)" 
+                    },
+                    { 
+                        title: "Day 4-7: Pahalgam, Sonmarg & Departure", 
+                        content: "Visit Betaab Valley, Aru Valley in Pahalgam. Day trip to Sonmarg for Thajiwas Glacier. Return to Srinagar for departure. (Meals: Daily Breakfast)" 
+                    }
+                ],
+                inclusions: [
+                    "Domestic Flights to Srinagar",
+                    "3-Star Hotel & Houseboat Accommodation",
+                    "English-Speaking Local Guides",
+                    "Daily Breakfast & Select Meals",
+                    "All Surface Transfers & Sightseeing"
+                ],
+                exclusions: [
+                    "Personal Expenses & Shopping",
+                    "Any Optional Activities",
+                    "Travel Insurance",
+                    "Meals Not Specified"
+                ],
+                dates: [
+                    { date: "Dec 15, 2025", package: "Standard", price: "$1,200" },
+                    { date: "Jan 10, 2026", package: "Winter Special", price: "$1,350", special: "(Snow Edition)" },
+                    { date: "Apr 05, 2026", package: "Standard", price: "$1,200" }
+                ]
+            },
+            bali: {
+                title: "Tropical Bali Escape",
+                heroImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200",
+                description: "Unwind in Bali's beaches, temples, and rice terraces. From Ubud's culture to Seminyak's luxury, experience island paradise.",
+                duration: "6 Days / 5 Nights",
+                price: "$1,500",
+                highlights: [
+                    { icon: "palm_tree", title: "Ubud Monkey Forest", desc: "Explore sacred temples with playful monkeys." },
+                    { icon: "waves", title: "Seminyak Beach", desc: "Sunset cocktails and world-class surfing." },
+                    { icon: "spa", title: "Balinese Spa", desc: "Traditional healing massages." },
+                    { icon: "local_florist", title: "Tegalalang Rice Terrace", desc: "Iconic green landscapes." }
+                ],
+                days: [
+                    { 
+                        title: "Day 1: Arrival in Denpasar", 
+                        content: "Airport transfer to Ubud. Relax with a welcome Balinese massage. (Meals: Dinner)" 
+                    },
+                    { 
+                        title: "Day 2: Ubud Cultural Tour", 
+                        content: "Visit Monkey Forest, Tegallalang, and Goa Gajah. Evening Kecak dance show. (Meals: Breakfast, Lunch)" 
+                    },
+                    { 
+                        title: "Day 3: Beach Day in Seminyak", 
+                        content: "Transfer to Seminyak for beach relaxation and shopping. (Meals: Breakfast)" 
+                    },
+                    { 
+                        title: "Day 4-6: Free Time & Departure", 
+                        content: "Optional water sports, spa, or excursions. Departure from Denpasar. (Meals: Breakfast)" 
+                    }
+                ],
+                inclusions: [
+                    "Round-Trip Flights from India",
+                    "4-Star Resort Stays",
+                    "Daily Breakfast",
+                    "Airport Transfers",
+                    "Cultural Tours"
+                ],
+                exclusions: [
+                    "Visa Fees",
+                    "Personal Shopping",
+                    "Alcoholic Beverages",
+                    "Extra Excursions"
+                ],
+                dates: [
+                    { date: "Feb 01, 2026", package: "Standard", price: "$1,500" },
+                    { date: "Jun 15, 2026", package: "Summer", price: "$1,650", special: "(Festival)" },
+                    { date: "Oct 20, 2026", package: "Standard", price: "$1,500" }
+                ]
+            },
+            dubai: {
+                title: "Luxury Dubai Adventure",
+                heroImage: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200",
+                description: "From Burj Khalifa heights to desert dunes, experience Dubai's blend of futuristic luxury and Arabian charm.",
+                duration: "5 Days / 4 Nights",
+                price: "$1,800",
+                highlights: [
+                    { icon: "account_balance", title: "Burj Khalifa", desc: "World's tallest building views." },
+                    { icon: "terrain", title: "Desert Safari", desc: "Dune bashing and Bedouin dinner." },
+                    { icon: "shopping_bag", title: "Dubai Mall", desc: "Aquarium and endless shopping." },
+                    { icon: "local_activity", title: "Global Village", desc: "Cultural pavilions and fireworks." }
+                ],
+                days: [
+                    { 
+                        title: "Day 1: Arrival in Dubai", 
+                        content: "Airport transfer to hotel. Evening Dubai Fountain show. (Meals: Dinner)" 
+                    },
+                    { 
+                        title: "Day 2: City Tour & Burj Khalifa", 
+                        content: "Visit Palm Jumeirah, Atlantis, and ascend Burj Khalifa. (Meals: Breakfast)" 
+                    },
+                    { 
+                        title: "Day 3: Desert Safari", 
+                        content: "Thrilling dune bash, camel ride, and BBQ. (Meals: Breakfast, Dinner)" 
+                    },
+                    { 
+                        title: "Day 4-5: Free Shopping & Departure", 
+                        content: "Explore malls and souks. Departure flight. (Meals: Breakfast)" 
+                    }
+                ],
+                inclusions: [
+                    "Visa Assistance",
+                    "5-Star Hotel",
+                    "Daily Breakfast",
+                    "All Tours & Transfers",
+                    "Desert Safari"
+                ],
+                exclusions: [
+                    "Lunch/Dinner Unless Specified",
+                    "Personal Expenses",
+                    "Travel Insurance"
+                ],
+                dates: [
+                    { date: "Jan 20, 2026", package: "Standard", price: "$1,800" },
+                    { date: "Mar 10, 2026", package: "Premium", price: "$2,200", special: "(Festive)" },
+                    { date: "Nov 05, 2026", package: "Standard", price: "$1,800" }
+                ]
+            },
+            maldives: {
+    title: "Romantic Maldives Getaway",
+    heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
+    description: "Crystal-clear waters, white-sand beaches, and luxury overwater villas — escape to the ultimate tropical paradise.",
+    duration: "4 Days / 3 Nights",
+    price: "$2,300",
+    highlights: [
+        { icon: "water", title: "Water Villas", desc: "Stay in premium overwater bungalows." },
+        { icon: "pool", title: "Snorkeling", desc: "Explore vibrant coral reefs." },
+        { icon: "spa", title: "Spa Therapy", desc: "Relax with ocean-view spa sessions." },
+        { icon: "directions_boat", title: "Sunset Cruise", desc: "Romantic cruise with dolphins." }
+    ],
+    days: [
+        {
+            title: "Day 1: Arrival & Resort Check-in",
+            content: "Speedboat transfer, beach walk, candlelight dinner. (Meals: Dinner)"
+        },
+        {
+            title: "Day 2: Water Activities",
+            content: "Snorkeling, kayaking, glass-boat experience. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 3: Spa & Sunset Cruise",
+            content: "Couple spa session and evening cruise. (Meals: Breakfast, Dinner)"
+        },
+        {
+            title: "Day 4: Departure",
+            content: "Free time and return transfer. (Meals: Breakfast)"
+        }
+    ],
+    inclusions: [
+        "Luxury Overwater Villa",
+        "Daily Breakfast & Dinner",
+        "Snorkeling Gear",
+        "Airport Transfers",
+        "Sunset Cruise"
+    ],
+    exclusions: [
+        "Lunch",
+        "Personal Expenses",
+        "Travel Insurance"
+    ],
+    dates: [
+        { date: "Feb 15, 2026", package: "Standard", price: "$2,300" },
+        { date: "Apr 08, 2026", package: "Premium", price: "$2,900", special: "(Spring Special)" },
+        { date: "Oct 20, 2026", package: "Standard", price: "$2,300" }
+    ]
+},
+switzerland: {
+    title: "Scenic Switzerland Escape",
+    heroImage: "images/himalaya.jpg",
+    description: "Snow-capped Alps, serene lakes, and charming European towns — discover Switzerland’s breathtaking beauty.",
+    duration: "7 Days / 6 Nights",
+    price: "$3,500",
+    highlights: [
+        { icon: "landscape", title: "Mount Titlis", desc: "Cable car ride to snow paradise." },
+        { icon: "train", title: "Jungfraujoch", desc: "Visit the Top of Europe by rail." },
+        { icon: "camera_alt", title: "Lucerne Tour", desc: "Explore Chapel Bridge & Lion Monument." },
+        { icon: "directions_boat", title: "Lake Geneva", desc: "Relaxing cruise experience." }
+    ],
+    days: [
+        {
+            title: "Day 1: Arrival in Zurich",
+            content: "Transfer to Lucerne and evening leisure. (Meals: Dinner)"
+        },
+        {
+            title: "Day 2: Lucerne City Tour",
+            content: "Chapel Bridge, Old Town, Lake Lucerne. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 3: Mount Titlis",
+            content: "Rotair cable car ride and snow activities. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 4: Interlaken & Cruise",
+            content: "Scenic lake cruise and local exploration. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 5: Jungfraujoch",
+            content: "Excursion to the Top of Europe. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 6: Geneva City Tour",
+            content: "UN HQ, Jet d’Eau, Flower Clock. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 7: Departure",
+            content: "Return transfer to Zurich airport. (Meals: Breakfast)"
+        }
+    ],
+    inclusions: [
+        "4-Star Hotels",
+        "Daily Breakfast",
+        "Swiss Travel Pass",
+        "All Sightseeing Tours",
+        "Airport Transfers"
+    ],
+    exclusions: [
+        "Lunch/Dinner",
+        "Entry Fees Not Listed",
+        "Travel Insurance"
+    ],
+    dates: [
+        { date: "Jan 15, 2026", package: "Standard", price: "$3,500" },
+        { date: "May 02, 2026", package: "Premium", price: "$4,200", special: "(Summer)" },
+        { date: "Dec 10, 2026", package: "Standard", price: "$3,500" }
+    ]
+},
+paris: {
+    title: "Romantic Paris Experience",
+    heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200",
+    description: "Walk the charming streets of Paris, savor French cuisine, and witness iconic monuments like the Eiffel Tower.",
+    duration: "5 Days / 4 Nights",
+    price: "$2,100",
+    highlights: [
+        { icon: "location_city", title: "Eiffel Tower", desc: "Enjoy panoramic views of Paris." },
+        { icon: "museum", title: "Louvre Museum", desc: "World-famous art collection." },
+        { icon: "directions_boat", title: "Seine Cruise", desc: "Illuminated night cruise." },
+        { icon: "bakery_dining", title: "French Cuisine", desc: "Authentic pastries & dining." }
+    ],
+    days: [
+        {
+            title: "Day 1: Arrival & Eiffel Tower",
+            content: "Evening visit to Eiffel Tower. (Meals: Dinner)"
+        },
+        {
+            title: "Day 2: Louvre Museum",
+            content: "Explore Mona Lisa & French art. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 3: Versailles Tour",
+            content: "Royal Palace & stunning gardens. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 4: Seine Cruise & Montmartre",
+            content: "Cruise + Sacré-Cœur visit. (Meals: Breakfast)"
+        },
+        {
+            title: "Day 5: Departure",
+            content: "Shopping and airport transfer. (Meals: Breakfast)"
+        }
+    ],
+    inclusions: [
+        "4-Star Hotel Stay",
+        "Daily Breakfast",
+        "Seine River Cruise",
+        "City Tour",
+        "Airport Transfers"
+    ],
+    exclusions: [
+        "Lunch/Dinner",
+        "Museum Tickets Not Listed",
+        "Travel Insurance"
+    ],
+    dates: [
+        { date: "Feb 05, 2026", package: "Standard", price: "$2,100" },
+        { date: "Jun 18, 2026", package: "Premium", price: "$2,700", special: "(Summer)" },
+        { date: "Sep 30, 2026", package: "Standard", price: "$2,100" }
+    ]
+},
+            // Add more destinations as needed (e.g., paris, maldives, switzerland)
+            // For now, default to kashmir if not found
+            default: {
+                title: "Enchanting Kashmir Tour",
+                heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200",
+                description: "Discover the paradise on earth with snow-capped mountains, lush valleys, Dal Lake houseboats, and serene Mughal gardens. Perfect for a romantic or family getaway.",
+                duration: "7 Days / 6 Nights",
+                price: "$1,200",
+                highlights: [
+                    { icon: "terrain", title: "Dal Lake Shikara Ride", desc: "Glide through the iconic lake on traditional boats." },
+                    { icon: "local_florist", title: "Tulips Garden", desc: "Wander through vibrant blooms in spring." },
+                    { icon: "wb_sunny", title: "Pahalgam Meadows", desc: "Picnic amid betaab valley's lush greenery." },
+                    { icon: "local_hotel", title: "Houseboat Stay", desc: "Luxurious overnight on the water." }
+                ],
+                days: [
+                    { 
+                        title: "Day 1: Arrival in Srinagar", 
+                        content: "Arrive at Srinagar Airport, transfer to houseboat on Dal Lake. Enjoy a welcome shikara ride and Kashmiri dinner. (Meals: Dinner)" 
+                    },
+                    { 
+                        title: "Day 2: Mughal Gardens Tour", 
+                        content: "Visit Nishat Bagh, Shalimar Bagh, and Chashme Shahi. Afternoon free for shopping at Boulevard Road. (Meals: Breakfast, Lunch)" 
+                    },
+                    { 
+                        title: "Day 3: Excursion to Gulmarg", 
+                        content: "Drive to Gulmarg for gondola ride to Apharwat. Explore meadows and enjoy pony rides. (Meals: Breakfast, Lunch, Dinner)" 
+                    },
+                    { 
+                        title: "Day 4-7: Pahalgam, Sonmarg & Departure", 
+                        content: "Visit Betaab Valley, Aru Valley in Pahalgam. Day trip to Sonmarg for Thajiwas Glacier. Return to Srinagar for departure. (Meals: Daily Breakfast)" 
+                    }
+                ],
+                inclusions: [
+                    "Domestic Flights to Srinagar",
+                    "3-Star Hotel & Houseboat Accommodation",
+                    "English-Speaking Local Guides",
+                    "Daily Breakfast & Select Meals",
+                    "All Surface Transfers & Sightseeing"
+                ],
+                exclusions: [
+                    "Personal Expenses & Shopping",
+                    "Any Optional Activities",
+                    "Travel Insurance",
+                    "Meals Not Specified"
+                ],
+                dates: [
+                    { date: "Dec 15, 2025", package: "Standard", price: "$1,200" },
+                    { date: "Jan 10, 2026", package: "Winter Special", price: "$1,350", special: "(Snow Edition)" },
+                    { date: "Apr 05, 2026", package: "Standard", price: "$1,200" }
+                ]
+            }
+        };
+
+        function Header({ dark, toggle }) {
+            return (
+                <header className="sticky top-0 z-50 bg-white/80 dark:bg-voyage-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-voyage-tan/20 shadow-sm">
+                    <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                        <a href="index.html" className="flex items-center gap-3">
+                            <img src="images/logo.jpg" alt="Logo" className="h-10 w-10 rounded-full border-2 border-primary shadow-lg object-cover" loading="lazy"/>
+                            <h2 className="text-xl font-bold">Suvidha Travels</h2>
+                        </a>
+                        <nav className="hidden md:flex gap-8 text-sm font-medium">
+                            <a href="#" className="text-voyage-dark dark:text-voyage-sand hover:text-voyage-blue dark:hover:text-voyage-blue transition-colors">Destinations</a>
+                            <a href="#" className="text-voyage-dark dark:text-voyage-sand hover:text-voyage-blue dark:hover:text-voyage-blue transition-colors">Packages</a>
+                            <a href="#" className="text-voyage-dark dark:text-voyage-sand hover:text-voyage-blue dark:hover:text-voyage-blue transition-colors">About</a>
+                            <a href="#" className="text-voyage-dark dark:text-voyage-sand hover:text-voyage-blue dark:hover:text-voyage-blue transition-colors">Contact</a>
+                        </nav>
+                        <div className="flex items-center gap-4">
+                            <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                                <span className="material-symbols-outlined">{dark ? 'light_mode' : 'dark_mode'}</span>
+                            </button>
+                            <button className="bg-voyage-orange hover:bg-opacity-90 text-white font-semibold py-2 px-6 rounded-full transition-colors">Book Now</button>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+
+        function Hero({ tour }) {
+            return (
+                <section className="min-h-[70vh] flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4 relative overflow-hidden" 
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("${tour.heroImage}")`
+                        }}>
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="relative flex flex-col gap-4 text-center max-w-4xl px-4 z-10">
+                        <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight fade-in visible">{tour.title}</h1>
+                        <p className="text-white/90 text-lg md:text-xl font-light fade-in visible">Explore ancient temples, vibrant cities, and breathtaking landscapes on this once-in-a-lifetime adventure.</p>
+                    </div>
+                </section>
+            );
+        }
+
+        function TourOverview({ tour }) {
+            return (
+                <section className="py-16 lg:py-24">
+                    <div className="container mx-auto px-6">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="mb-12 text-center border-b border-voyage-tan/30 pb-8 fade-in visible">
+                                <h2 className="text-4xl font-bold text-voyage-dark dark:text-white mb-2">An Unforgettable Journey</h2>
+                                <div className="flex items-center justify-center space-x-6 text-voyage-dark/70 dark:text-voyage-sand/70">
+                                    <span>{tour.duration}</span>
+                                    <span className="text-voyage-tan">|</span>
+                                    <span>Starting from <strong className="text-voyage-orange font-semibold">{tour.price}</strong></span>
+                                </div>
+                                <p className="text-voyage-dark/80 dark:text-voyage-sand/80 text-lg mt-6 max-w-3xl mx-auto">
+                                    {tour.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function KeyHighlights({ highlights }) {
+            return (
+                <section className="py-16 container mx-auto px-6">
+                    <h3 className="text-3xl font-bold text-center mb-10 text-voyage-dark dark:text-white fade-in visible">Key Highlights</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {highlights.map((h, i) => (
+                            <div key={i} className="flex flex-col items-center text-center lazy-load visible">
+                                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-voyage-blue/10 mb-4">
+                                    <span className="material-symbols-outlined text-voyage-blue text-3xl">{h.icon}</span>
+                                </div>
+                                <h4 className="font-semibold text-lg text-voyage-dark dark:text-white">{h.title}</h4>
+                                <p className="text-voyage-dark/70 dark:text-voyage-sand/70 text-sm">{h.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function DailyItinerary({ days }) {
+            const [openIndex, setOpenIndex] = useState(0);
+
+            return (
+                <section className="py-16 container mx-auto px-6">
+                    <h3 className="text-3xl font-bold text-center mb-10 text-voyage-dark dark:text-white fade-in visible">Daily Itinerary</h3>
+                    <div className="space-y-4 max-w-4xl mx-auto">
+                        {days.map((day, i) => (
+                            <div key={i} className={`group rounded-xl bg-gray-50 dark:bg-voyage-dark/70 p-6 cursor-pointer border border-transparent hover:border-voyage-blue/50 transition-all ${openIndex === i ? 'accordion-open' : ''}`}>
+                                <div 
+                                    className="accordion-summary flex items-center justify-between font-semibold text-voyage-dark dark:text-white text-lg" 
+                                    onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+                                >
+                                    {day.title}
+                                    <span className="accordion-icon material-symbols-outlined text-voyage-blue text-3xl font-light transform">+</span>
+                                </div>
+                                {openIndex === i && (
+                                    <div className="mt-4">
+                                        <p className="text-voyage-dark/80 dark:text-voyage-sand/80">{day.content}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function InclusionsExclusions({ inclusions, exclusions }) {
+            return (
+                <section className="py-16 container mx-auto px-6">
+                    <h3 className="text-3xl font-bold text-center mb-10 text-voyage-dark dark:text-white fade-in visible">What's Included</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
+                        <div>
+                            <h4 className="font-semibold text-xl mb-4 text-green-600 dark:text-green-400">Inclusions</h4>
+                            <ul className="space-y-3 text-voyage-dark/90 dark:text-voyage-sand/90">
+                                {inclusions.map((inc, i) => (
+                                    <li key={i} className="flex items-start">
+                                        <span className="material-symbols-outlined text-green-600 dark:text-green-400 mr-3 mt-0.5">check_circle</span>
+                                        {inc}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-xl mb-4 text-red-600 dark:text-red-400">Exclusions</h4>
+                            <ul className="space-y-3 text-voyage-dark/90 dark:text-voyage-sand/90">
+                                {exclusions.map((exc, i) => (
+                                    <li key={i} className="flex items-start">
+                                        <span className="material-symbols-outlined text-red-600 dark:text-red-400 mr-3 mt-0.5">cancel</span>
+                                        {exc}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function PricingDates({ dates }) {
+            return (
+                <section className="py-16 container mx-auto px-6">
+                    <h3 className="text-3xl font-bold text-center mb-10 text-voyage-dark dark:text-white fade-in visible">Pricing & Dates</h3>
+                    <div className="overflow-x-auto rounded-xl shadow-md border border-gray-200 dark:border-voyage-tan/20">
+                        <table className="w-full text-left bg-white dark:bg-voyage-dark/70">
+                            <thead className="bg-gray-50 dark:bg-voyage-dark/80">
+                                <tr>
+                                    <th className="p-4 md:p-6 font-semibold text-voyage-dark dark:text-white">Departure Date</th>
+                                    <th className="p-4 md:p-6 font-semibold text-voyage-dark dark:text-white">Package</th>
+                                    <th className="p-4 md:p-6 font-semibold text-voyage-dark dark:text-white">Price / Person</th>
+                                    <th className="p-4 md:p-6 font-semibold text-voyage-dark dark:text-white"></th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200 dark:divide-voyage-tan/20">
+                                {dates.map((d, i) => (
+                                    <tr key={i} className={d.special ? "bg-voyage-blue/10 dark:bg-voyage-blue/20" : ""}>
+                                        <td className="p-4 md:p-6">
+                                            {d.date}
+                                            {d.special && <span className="text-xs font-medium text-voyage-blue ml-2">{d.special}</span>}
+                                        </td>
+                                        <td className="p-4 md:p-6">{d.package}</td>
+                                        <td className="p-4 md:p-6 font-semibold text-voyage-dark dark:text-white">{d.price}</td>
+                                        <td className="p-4 md:p-6 text-right">
+                                            <button className="bg-voyage-orange hover:bg-opacity-90 text-white font-semibold py-2 px-6 rounded-full transition-colors text-sm">Book Now</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            );
+        }
+
+        function CTAFooter({ tour }) {
+            return (
+                <footer className="sticky bottom-0 w-full bg-white/90 dark:bg-voyage-dark/90 backdrop-blur-sm border-t border-gray-200 dark:border-voyage-tan/20 p-4 z-40">
+                    <div className="container mx-auto px-6">
+                        <div className="max-w-4xl mx-auto flex justify-between items-center">
+                            <div>
+                                <p className="font-semibold text-lg text-voyage-dark dark:text-white">From {tour.price}</p>
+                                <p className="text-sm text-voyage-dark/70 dark:text-voyage-sand/70">per person</p>
+                            </div>
+                            <button className="flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-voyage-orange hover:bg-opacity-90 text-white text-base font-bold leading-normal tracking-wide shadow-lg">
+                                <span className="truncate">Book This Tour</span>
+                            </button>
+                        </div>
+                    </div>
+                </footer>
+            );
+        }
+
+        function App() {
+            const [dark, setDark] = useState(false);
+            const [tour, setTour] = useState(null);
+            const bar = useRef(null);
+
+            useEffect(() => {
+                // Read URL param
+                const urlParams = new URLSearchParams(window.location.search);
+                const destination = urlParams.get('destination')?.toLowerCase() || 'kashmir';
+                const selectedTour = tourData[destination] || tourData.default;
+                
+                // Update SEO meta tags dynamically
+                document.getElementById('page-title').textContent = `${selectedTour.title} | Suvidha Travels`;
+                document.getElementById('page-description').setAttribute('content', `${selectedTour.description}`);
+                document.getElementById('og-title').setAttribute('content', `${selectedTour.title} | Suvidha Travels`);
+                document.getElementById('og-image').setAttribute('content', selectedTour.heroImage);
+                
+                setTour(selectedTour);
+            }, []);
+
+            useEffect(() => {
+                if (localStorage.getItem('theme') === 'dark') {
+                    setDark(true);
+                    document.documentElement.classList.add('dark');
+                }
+            }, []);
+            const toggle = () => {
+                setDark(!dark);
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', dark ? 'light' : 'dark');
+            };
+
+            useEffect(() => {
+                const handle = () => { bar.current.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%'; };
+                window.addEventListener('scroll', handle);
+                return () => window.removeEventListener('scroll', handle);
+            }, []);
+
+            useEffect(() => {
+                const obs = new IntersectionObserver(e => e.forEach(en => {
+                    if (en.isIntersecting) {
+                        en.target.classList.add('visible');
+                        obs.unobserve(en.target);
+                    }
+                }), { threshold: 0.1 });
+                document.querySelectorAll('.fade-in:not(.visible), .lazy-load:not(.visible)').forEach(el => obs.observe(el));
+            }, []);
+
+            if (!tour) {
+                return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+            }
+
+            return (
+                <div className="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+                    <div ref={bar} id="scrollBar"></div>
+                    <Header dark={dark} toggle={toggle} />
+                    <main className="w-full">
+                        <Hero tour={tour} />
+                        <TourOverview tour={tour} />
+                        <KeyHighlights highlights={tour.highlights} />
+                        <DailyItinerary days={tour.days} />
+                        <InclusionsExclusions inclusions={tour.inclusions} exclusions={tour.exclusions} />
+                        <PricingDates dates={tour.dates} />
+                    </main>
+                    <CTAFooter tour={tour} />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
