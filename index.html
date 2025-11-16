@@ -6,9 +6,24 @@
     <title>Suvidha Travels - Best Tour & Travel Agency in Patna</title>
 
     <!-- SEO -->
-    <meta name="description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, and 24/7 support. Based in Patna, Bihar." />
+    <meta name="description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, domestic and international tour deals, and 24/7 support. Based in Patna, Bihar." />
+    <meta name="keywords" content="
+    Suvidha Travels, travel agency in Patna, best travel agency in Patna,
+    tour packages in Patna, Patna tour operators, Patna travel booking,
+    international tour packages from Patna, domestic tour packages India,
+    Dubai tour package from Patna, Bali holiday from Patna, Thailand trip from Patna,
+    honeymoon packages India, customized itineraries, family vacation packages,
+    luxury travel packages, budget-friendly tours, flight booking Patna,
+    hotel booking Patna, Bihar tourism, Bodhgaya tour, Rajgir Nalanda tour,
+    24/7 travel support, visa assistance Patna, adventure tour packages,
+    religious travel packages, group travel packages, curated itineraries,
+    affordable holiday packages India, Maldives honeymoon package from Patna,
+    Europe tour packages India, Singapore Malaysia package Patna, Goa tour package,
+    Kashmir tour package, Manali tour package
+    " />
     <meta property="og:title" content="Suvidha Travels" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200" />
+    <meta property="og:image" content="https://yourwebsite.com/images/logo.jpg" />
+
 
     <!-- Tailwind + Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -514,7 +529,8 @@
             return (
                 <section className="py-20 bg-white dark:bg-gray-900">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-10 fade-in visible">International Packages</h2>
+                        <h2 className="text-3xl font-bold text-center mb-10 fade-in 
+                        visible">International Packages</h2>
                         <div className="tray-nav relative">
                             <div ref={trayRef} className="tray pkg-tray">
                                 {pkgs.map((p,i)=>(
@@ -626,13 +642,40 @@
             return (
                 <section className="py-20 bg-white dark:bg-gray-900">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Based in Patna - Get in Touch</h2>
+                        <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Based in Patna - Contact Us</h2>
                         <div className="contact-grid">
                             <div>
-                                <h3 className="text-2xl font-bold mb-4">Our Office</h3>
-                                <p className="text-gray-600 dark:text-gray-400 mb-4">Suvidha Travels<br />Fraser Road, Patna, Bihar 800001<br />India</p>
-                                <p className="text-gray-600 dark:text-gray-400 mb-4">Phone: +91 98765 43210<br />Email: suvidhatour@gmail.com</p>
-                            </div>
+  <h3 className="text-2xl font-bold mb-4">Our Office</h3>
+
+  <p className="text-gray-600 dark:text-gray-400 mb-4">
+    <a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" 
+    target = "_blank"
+    className="hover:underline ml-1">
+    Suvidha Travels<br />
+    5TH FLOOR, 512, JAGAT TRADE CENTRE, FRAZER ROAD, PATNA, BIHAR - 800001
+    <br />
+    India
+    </a>
+    
+  </p>
+  <p className="text-gray-600 dark:text-gray-400 mb-4">
+    Phone: 
+    <a href="https://wa.me/9304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!
+" 
+    target ="_blank"
+    className="hover:underline ml-1">
+      +91 9304010727
+    </a>
+    <br />
+    Email: 
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=suvidhatour@gmail.com&su=Hey!%20I've%20a%20Travel%20Enquiry." 
+    target = "_blank"
+    className="hover:underline ml-1">
+      suvidhatour@gmail.com
+    </a>
+  </p>
+</div>
+
                             <div className="map-container">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.3096636778637!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e1!3m2!1sen!2sin!4v1763046246896!5m2!1sen!2sin"
@@ -702,7 +745,7 @@
                             <div>
                                 <h4 className="font-semibold uppercase mb-4">Quick Links</h4>
                                 <ul className="space-y-2 text-sm text-gray-400">
-                                    <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
+                                    <li><a href="index.html" className="hover:text-white transition-colors">Home</a></li>
                                     <li><a href="#" className="hover:text-white transition-colors">Destinations</a></li>
                                     <li><a href="#" className="hover:text-white transition-colors">Packages</a></li>
                                     <li><a href="#" className="hover:text-white transition-colors">About</a></li>
@@ -720,9 +763,23 @@
                             <div>
                                 <h4 className="font-semibold uppercase mb-4">Contact Info</h4>
                                 <ul className="space-y-2 text-sm text-gray-400">
-                                    <li>Fraser Road, Patna, Bihar 800001</li>
-                                    <li>suvidhatour@gmail.com</li>
-                                    <li>+91 98765 43210</li>
+                                    <li><a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" 
+                                    target = "_blank"
+                                    className="hover:underline ml-1">
+                                    Suvidha Travels<br />
+                                    5th floor, 512, Jagat Trade center, Frazer Road, Patna, Bihar - 800001, India
+                                    </a></li>
+                                    <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=suvidhatour@gmail.com&su=Hey!%20I've%20a%20Travel%20Enquiry." 
+                                    target = "_blank"
+                                    className="hover:underline ml-1">
+                                      suvidhatour@gmail.com
+                                    </a></li>
+                                    <li><a href="https://wa.me/9304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!
+                                    " 
+                                    target ="_blank"
+                                    className="hover:underline ml-1">
+                                      +91 93040 10727
+                                    </a></li>
                                 </ul>
                             </div>
                         </div>
