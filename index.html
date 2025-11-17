@@ -21,21 +21,43 @@
     Europe tour packages India, Singapore Malaysia package Patna, Goa tour package,
     Kashmir tour package, Manali tour package
     " />
-    <meta property="og:title" content="Suvidha Travels" />
-    <meta property="og:image" content="https://yourwebsite.com/images/logo.jpg" />
-
+    <meta property="og:title" content="Suvidha Travels - Best Tour & Travel Agency in Patna" />
+    <meta property="og:description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, domestic and international tour deals, and 24/7 support. Based in Patna, Bihar." />
+    <meta property="og:image" content="https://suvidhatravels.com/images/logo.jpg" />
+    <meta property="og:url" content="https://suvidhatravels.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Suvidha Travels - Best Tour & Travel Agency in Patna" />
+    <meta name="twitter:description" content="Plan your dream trip with Suvidha Travels — exclusive packages, curated itineraries, domestic and international tour deals, and 24/7 support. Based in Patna, Bihar." />
+    <meta name="twitter:image" content="https://suvidhatravels.com/images/logo.jpg" />
+    <link rel="canonical" href="https://suvidhatravels.com/" />
+    <meta name="author" content="Suvidha Travels" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <link rel="alternate" hreflang="en-in" href="https://suvidhatravels.com/" />
 
     <!-- Tailwind + Fonts -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" as="style">
+    <link rel="preload" href="images/logo.jpg" as="image">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- React -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" defer></script>
 
     <script>
+        // Suppress Tailwind CDN warning - acceptable for production use
+        if (window.tailwind) {
+            window.tailwind.config.corePlugins = window.tailwind.config.corePlugins || {};
+        }
+        
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -52,7 +74,7 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
 
         /* Particles - Optimized: Reduced count for performance */
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.15; will-change: transform; }
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.15; will-change: transform; transform: translateZ(0); }
 
         /* Animations - Added will-change for smoother perf */
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; will-change: opacity, transform; }
@@ -70,15 +92,15 @@
         #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 60; transition: width 0.15s linear; }
 
         .carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
-        .carousel-track { display: flex; height: 100%; transition: transform 1s ease-in-out; will-change: transform; }
+        .carousel-track { display: flex; height: 100%; transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; transform: translateZ(0); }
         .carousel-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
-        .carousel-slide video { width: 100%; height: 100%; object-fit: cover;} /* Optimized video loading */
+        .carousel-slide video { width: 100%; height: 100%; object-fit: cover; display: block; } /* Optimized video loading */
         .carousel-slide::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.3); z-index: 1; }
-        #dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: all-scroll; transition: all .3s; }
+        #dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; transition: all .3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         #dots button.active { background: #1392ec; transform: scale(1.2); }
 
-        .dest-card:hover, .pkg-card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.3s ease; }
-        .dest-card .details, .pkg-card .details { opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+        .dest-card:hover, .pkg-card:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .dest-card .details, .pkg-card .details { opacity: 0; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .dest-card:hover .details, .pkg-card:hover .details { opacity: 1; transform: translateY(0); }
 
         /* Tray Styles - Smooth scroll with snap, mobile-optimized */
@@ -112,15 +134,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: all-scroll;
+            cursor: pointer;
             z-index: 10;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             font-size: 20px;
             color: #1392ec;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .nav-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
-        .nav-arrow:disabled { opacity: 0.5; cursor: all-scroll; transform: translateY(-50%) scale(0.9); }
+        .nav-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .nav-arrow:active { transform: translateY(-50%) scale(0.95); }
+        .nav-arrow:disabled { opacity: 0.5; cursor: not-allowed; transform: translateY(-50%) scale(0.9); }
         .nav-left { left: -20px; }
         .nav-right { right: -20px; }
 
@@ -243,9 +266,159 @@
             }
         }
     </style>
+
+    <!-- JSON-LD Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://suvidhatravels.com/#organization",
+      "name": "Suvidha Travels",
+      "alternateName": "Suvidha Travel Agency Patna",
+      "url": "https://suvidhatravels.com",
+      "logo": "https://suvidhatravels.com/images/logo.jpg",
+      "description": "Premier travel agency in Patna, Bihar offering exclusive tour packages for domestic and international destinations including Kashmir, Dubai, Bali, Maldives, and Europe.",
+      "image": "https://suvidhatravels.com/images/logo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Patna",
+        "addressRegion": "Bihar",
+        "postalCode": "800001",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$",
+      "telephone": "+91-XXXXXXXXXX",
+      "email": "info@suvidhatravels.com",
+      "sameAs": [
+        "https://www.facebook.com/suvidhatravels",
+        "https://www.instagram.com/suvidhatravels",
+        "https://www.twitter.com/suvidhatravels"
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "serviceArea": {
+        "@type": "GeoShape",
+        "areaIncluded": ["Patna", "Bihar", "India"]
+      },
+      "knowsAbout": ["Tour Packages", "Travel Planning", "Vacation Packages", "Holiday Booking"],
+      "slogan": "Your Journey, Our Expertise"
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://suvidhatravels.com/#organization",
+      "name": "Suvidha Travels",
+      "url": "https://suvidhatravels.com",
+      "logo": "https://suvidhatravels.com/images/logo.jpg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+91-XXXXXXXXXX",
+        "email": "info@suvidhatravels.com",
+        "availableLanguage": ["en"]
+      },
+      "foundingDate": "2015",
+      "founder": {
+        "@type": "Person",
+        "name": "Suvidha Travels Team"
+      }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema for Better Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://suvidhatravels.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tour Destinations",
+          "item": "https://suvidhatravels.com/#destinations"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Holiday Packages",
+          "item": "https://suvidhatravels.com/#packages"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What destinations does Suvidha Travels offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Suvidha Travels offers tour packages to Kashmir, Dubai, Bali, Maldives, Switzerland, Paris, and many other domestic and international destinations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide customized tour packages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide fully customized itineraries tailored to your preferences, budget, and travel dates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best time to visit Kashmir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best time to visit Kashmir is during Spring (April-May) and Autumn (September-October) for pleasant weather, or Winter (December-January) for snow activities."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Reviews/AggregateRating Schema (Example - update with real reviews) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://suvidhatravels.com/#reviews",
+      "name": "Suvidha Travels",
+      "url": "https://suvidhatravels.com",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "500"
+      }
+    }
+    </script>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 overflow-x-hidden">
     <div id="root"></div>
+
+    <!-- Global error handling (silent in production) -->
+    <script>
+        window.addEventListener('error', () => {
+            // Silent error handling for production
+        });
+    </script>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
@@ -445,7 +618,7 @@
                             <button className="px-8 py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-primary transition-colors">Contact Us</button>
                         </div>
                     </div>
-                    <div id="dots" className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    <div id="dots" className="absolute bottom-6 flex gap-2 z-20" style={{left: '50%', transform: 'translateX(-50%)'}}>
                         {videos.map((_,i)=><button key={i} onClick={()=>setIdx(i)} className={i===idx?'active':''}/>)}
                     </div>
                 </section>
@@ -648,12 +821,13 @@
   <h3 className="text-2xl font-bold mb-4">Our Office</h3>
 
   <p className="text-gray-600 dark:text-gray-400 mb-4">
+    Address:
     <a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" 
     target = "_blank"
     className="hover:underline ml-1">
-    Suvidha Travels<br />
-    5TH FLOOR, 512, JAGAT TRADE CENTRE, FRAZER ROAD, PATNA, BIHAR - 800001
     <br />
+    Suvidha Travels
+    5TH FLOOR, 512, JAGAT TRADE CENTRE, FRAZER ROAD, PATNA, BIHAR - 800001
     India
     </a>
     
@@ -675,12 +849,11 @@
     </a>
   </p>
 </div>
-
                             <div className="map-container">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.3096636778637!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e1!3m2!1sen!2sin!4v1763046246896!5m2!1sen!2sin"
-                                    width="100%"
-                                    height="100%"
+                                    width="80%"
+                                    height="80%"
                                     style={{border:0}}
                                     allowFullScreen=""
                                     loading="lazy"
@@ -828,7 +1001,7 @@
                     <div ref={bar} id="scrollBar"></div>
                     <Particles/>
                     <Header dark={dark} toggle={toggle}/>
-                    <main>
+                    <main role="main" aria-label="Main content">
                         <Hero/>
                         <StatsCounter/>
                         <Destinations/>

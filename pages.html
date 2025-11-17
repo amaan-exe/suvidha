@@ -7,12 +7,26 @@
 
     <!-- SEO -->
     <meta id="page-description" name="description" content="Discover amazing destinations with Suvidha Travels." />
+    <meta name="keywords" content="tour packages, travel deals, destination tours, holiday packages, family vacation, honeymoon packages, budget travel, luxury tours" />
+    <link rel="canonical" id="canonical-url" href="https://suvidhatravels.com/pages.html" />
     <meta id="og-title" property="og:title" content="Destination Tour | Suvidha Travels" />
+    <meta id="og-description" property="og:description" content="Discover amazing destinations with Suvidha Travels." />
     <meta id="og-image" property="og:image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" />
+    <meta property="og:url" id="og-url" content="https://suvidhatravels.com/pages.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" id="twitter-title" content="Destination Tour | Suvidha Travels" />
+    <meta name="twitter:description" id="twitter-desc" content="Discover amazing destinations with Suvidha Travels." />
+    <meta name="twitter:image" id="twitter-image" content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" />
+    <meta name="author" content="Suvidha Travels" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
     <!-- Tailwind + Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" as="style">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet"/>
 
     <!-- React -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -64,6 +78,50 @@
         /* Scrollbar */
         #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 60; transition: width 0.15s linear; }
     </style>
+
+    <!-- JSON-LD Schema Markup for Tour Packages -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAction",
+      "name": "Book Your Dream Tour",
+      "description": "Browse and book curated tour packages from Suvidha Travels",
+      "organizer": {
+        "@type": "Organization",
+        "@id": "https://suvidhatravels.com/#organization",
+        "name": "Suvidha Travels"
+      }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema for Tour Pages -->
+    <script type="application/ld+json" id="breadcrumb-schema">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://suvidhatravels.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tour Packages",
+          "item": "https://suvidhatravels.com/pages.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Destination",
+          "item": "https://suvidhatravels.com/pages.html?destination=kashmir"
+        }
+      ]
+    }
+    </script>
+
 </head>
 <body class="bg-voyage-sand dark:bg-voyage-dark text-voyage-dark dark:text-voyage-sand overflow-x-hidden font-sans">
     <div id="root"></div>
@@ -642,7 +700,13 @@ paris: {
                 document.getElementById('page-title').textContent = `${selectedTour.title} | Suvidha Travels`;
                 document.getElementById('page-description').setAttribute('content', `${selectedTour.description}`);
                 document.getElementById('og-title').setAttribute('content', `${selectedTour.title} | Suvidha Travels`);
+                document.getElementById('og-description').setAttribute('content', `${selectedTour.description}`);
                 document.getElementById('og-image').setAttribute('content', selectedTour.heroImage);
+                document.getElementById('og-url').setAttribute('content', `https://suvidhatravels.com/pages.html?destination=${destination}`);
+                document.getElementById('twitter-title').setAttribute('content', `${selectedTour.title} | Suvidha Travels`);
+                document.getElementById('twitter-desc').setAttribute('content', `${selectedTour.description}`);
+                document.getElementById('twitter-image').setAttribute('content', selectedTour.heroImage);
+                document.getElementById('canonical-url').setAttribute('href', `https://suvidhatravels.com/pages.html?destination=${destination}`);
                 
                 setTour(selectedTour);
             }, []);

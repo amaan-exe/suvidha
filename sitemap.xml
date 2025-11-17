@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!-- Homepage - Daily updates -->
+    <url>
+        <loc>https://suvidhatravels.com/</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Destination Pages - Kashmir -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=kashmir</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800</image:loc>
+            <image:title>Enchanting Kashmir Tour</image:title>
+        </image:image>
+    </url>
+
+    <!-- Destination Pages - Dubai -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=dubai</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800</image:loc>
+            <image:title>Luxury Dubai Adventure</image:title>
+        </image:image>
+    </url>
+
+    <!-- Destination Pages - Bali -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=bali</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1551632811-561732d1e306?w=800</image:loc>
+            <image:title>Tropical Bali Escape</image:title>
+        </image:image>
+    </url>
+
+    <!-- Destination Pages - Maldives -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=maldives</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800</image:loc>
+            <image:title>Romantic Maldives Getaway</image:title>
+        </image:image>
+    </url>
+
+    <!-- Destination Pages - Switzerland -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=switzerland</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://suvidhatravels.com/images/himalaya.jpg</image:loc>
+            <image:title>Scenic Switzerland Escape</image:title>
+        </image:image>
+    </url>
+
+    <!-- Destination Pages - Paris -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html?destination=paris</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800</image:loc>
+            <image:title>Romantic Paris Experience</image:title>
+        </image:image>
+    </url>
+
+    <!-- Tour Packages Page -->
+    <url>
+        <loc>https://suvidhatravels.com/pages.html</loc>
+        <lastmod>2025-11-17</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
