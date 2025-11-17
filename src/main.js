@@ -419,17 +419,17 @@ function Contact() {
                             </div>
                         </div>
                     </div>
-                    <div className="map-container">
+                    <div className="map-container bg-gray-200">
                         <iframe
-                            title="Suvidha Travels Location Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.3096636778637!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e1!3m2!1sen!2sin!4v1763046246896!5m2!1sen!2sin"
+                            title="Suvidha Travels Location Map - Patna, Bihar"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2906364133873!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e0!3m2!1sen!2sin!4v1700000000000"
                             width="100%"
                             height="100%"
-                            style={{border: 0, display: 'block'}}
-                            allowFullScreen={true}
+                            style={{border: 0}}
+                            allowFullScreen=""
                             loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade">
-                        </iframe>
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
                     </div>
                 </div>
             </div>
