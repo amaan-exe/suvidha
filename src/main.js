@@ -394,43 +394,39 @@ function Contact() {
                 <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Based in Patna - Contact Us</h2>
                 <div className="contact-grid">
                     <div>
-  <h3 className="text-2xl font-bold mb-4">Our Office</h3>
-
-  <p className="text-gray-600 dark:text-gray-400 mb-4">
-    Address:
-    <a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" 
-    target="_blank"
-    className="hover:underline ml-1">
-    <br />
-    Suvidha Travels
-    5TH FLOOR, 512, JAGAT TRADE CENTRE, FRAZER ROAD, PATNA, BIHAR - 800001
-    India
-    </a>
-    
-  </p>
-  <p className="text-gray-600 dark:text-gray-400 mb-4">
-    Phone: 
-    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!" 
-    target="_blank"
-    className="hover:underline ml-1">
-      +91 9304010727
-    </a>
-    <br />
-    Email: 
-    <a href="mailto:suvidhatour@gmail.com" 
-    
-    className="hover:underline ml-1">
-      suvidhatour@gmail.com
-    </a>
-  </p>
-</div>
+                        <h3 className="text-2xl font-bold mb-6">Our Office</h3>
+                        <div className="space-y-6">
+                            <div>
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Address:</h4>
+                                <a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary hover:underline block">
+                                    Suvidha Travels<br />
+                                    5TH FLOOR, 512, JAGAT TRADE CENTRE,<br />
+                                    FRAZER ROAD, PATNA, BIHAR - 800001<br />
+                                    India
+                                </a>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Phone:</h4>
+                                <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary hover:underline">
+                                    +91 9304010727
+                                </a>
+                            </div>
+                            <div>
+                                <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Email:</h4>
+                                <a href="mailto:suvidhatour@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-primary hover:underline">
+                                    suvidhatour@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div className="map-container">
                         <iframe
+                            title="Suvidha Travels Location Map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1997.3096636778637!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e1!3m2!1sen!2sin!4v1763046246896!5m2!1sen!2sin"
                             width="100%"
                             height="100%"
-                            style={{border:0}}
-                            allowFullScreen=""
+                            style={{border: 0, display: 'block'}}
+                            allowFullScreen={true}
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
