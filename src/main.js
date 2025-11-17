@@ -109,11 +109,11 @@ function Header({ dark, toggle }) {
                 </a>
                 <nav className="hidden md:flex gap-8 text-sm font-medium">
                     <a href="index.html" className="hover:text-primary">Home</a>
-                    <a href="#" className="hover:text-primary">Services</a>
-                    <a href="#" className="hover:text-primary">Packages</a>
-                    <a href="#" className="hover:text-primary">About</a>
-                    <a href="#" className="hover:text-primary">Gallery</a>
-                    <a href="#" className="hover:text-primary">Contact</a>
+                    <a href="services.html" className="hover:text-primary">Services</a>
+                    <a href="packages.html" className="hover:text-primary">Packages</a>
+                    <a href="index.html#about" className="hover:text-primary">About</a>
+                    <a href="gallery.html" className="hover:text-primary">Gallery</a>
+                    <a href="contact.html" className="hover:text-primary">Contact</a>
                 </nav>
                 <div className="flex items-center gap-4">
                     <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">

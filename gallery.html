@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gallery - Suvidha Travels</title>
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/logo.jpg">
+
+    <meta name="description" content="Browse stunning photos from our travels and customer experiences. Explore the beauty of destinations with Suvidha Travels." />
+    <meta name="keywords" content="travel gallery, travel photos, destination images, travel experiences" />
+    <meta property="og:title" content="Gallery - Suvidha Travels" />
+    <meta property="og:description" content="Browse stunning photos from our travels and customer experiences." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" as="style">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Oregano&family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js" defer></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" defer></script>
+
+    <script>
+        if (window.tailwind) {
+            window.tailwind.config.corePlugins = window.tailwind.config.corePlugins || {};
+        }
+        
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { primary: "#1392ec", "background-light": "#f6f7f8", "background-dark": "#101a22" },
+                    fontFamily: { display: ["Plus Jakarta Sans", "sans-serif"], oregano: ["Oregano", "cursive"] }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
+
+        #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 40; pointer-events: none; }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; will-change: opacity, transform; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; will-change: opacity, transform; }
+        .lazy-load.visible { opacity: 1; transform: translateY(0); }
+
+        .gallery-item { 
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .gallery-item:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
+        @media (max-width: 640px) {
+            .hero h1 { 
+                font-size: 2rem !important; 
+                line-height: 1.3 !important;
+            }
+        }
+    </style>
+
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 overflow-x-hidden">
+    <div id="root"></div>
+
+    <script src="dist/gallery-app.js" defer></script>
+
+</body>
+</html>
