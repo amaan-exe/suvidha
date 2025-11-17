@@ -3,14 +3,21 @@ const { useState, useEffect, useRef } = React;
 // Particles - Optimized: Fewer particles
 function Particles() {
     const canvas = useRef(null);
+    const frameIdRef = useRef(null);
     useEffect(() => {
+        if (!canvas.current) return;
         const ctx = canvas.current.getContext('2d');
         canvas.current.width = window.innerWidth;
         canvas.current.height = window.innerHeight;
-        window.addEventListener('resize', () => {
-            canvas.current.width = window.innerWidth;
-            canvas.current.height = window.innerHeight;
-        });
+        
+        const handleResize = () => {
+            if (canvas.current) {
+                canvas.current.width = window.innerWidth;
+                canvas.current.height = window.innerHeight;
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        
         const particles = Array.from({length: 15}, () => ({ // Reduced from 25
             x: Math.random() * canvas.current.width,
             y: Math.random() * canvas.current.height,
@@ -19,7 +26,9 @@ function Particles() {
             radius: Math.random() * 2 + 1,
             opacity: Math.random() * 0.4 + 0.1
         }));
+        
         const draw = () => {
+            if (!canvas.current) return;
             ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
             particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
@@ -30,9 +39,14 @@ function Particles() {
                 ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
                 ctx.fill();
             });
-            requestAnimationFrame(draw);
+            frameIdRef.current = requestAnimationFrame(draw);
         };
         draw();
+        
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            if (frameIdRef.current) cancelAnimationFrame(frameIdRef.current);
+        };
     }, []);
     return <canvas ref={canvas} className="fixed inset-0 pointer-events-none z-0 opacity-15"/>;
 }
@@ -558,8 +572,18 @@ function App() {
     const toggle=()=>{setDark(!dark);document.documentElement.classList.toggle('dark');localStorage.setItem('theme',dark?'light':'dark');};
 
     useEffect(()=>{
-        const handle=()=>{bar.current.style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';};
-        window.addEventListener('scroll',handle);
+        let ticking = false;
+        const handle=()=>{
+            if(!ticking && bar.current) {
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const scrollPercent = (window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+                    bar.current.style.width = Math.min(scrollPercent, 100)+'%';
+                    ticking = false;
+                });
+            }
+        };
+        window.addEventListener('scroll',handle,{passive:true});
         return ()=>window.removeEventListener('scroll',handle);
     },[]);
 
