@@ -538,9 +538,13 @@ function Footer() {
 
 function BackToTop() {
     const [show,setShow]=useState(false);
-    useEffect(()=>{window.addEventListener('scroll',()=>setShow(window.scrollY>500));},[]);
+    useEffect(()=>{
+        const handleScroll = () => setShow(window.scrollY > 500);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    },[]);
     return (
-        <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})} className={`fixed bottom-8 right-8 z-50 bg-primary text-white p-3 rounded-full shadow-lg transition-all ${show?'opacity-100':'opacity-0'}`}>
+        <button onClick={()=>window.scrollTo({top:0,behavior:'smooth'})} className={`fixed bottom-8 right-8 z-50 bg-primary text-white p-3 rounded-full shadow-lg transition-all ${show?'opacity-100':'opacity-0 pointer-events-none'}`}>
             <span className="material-symbols-outlined">arrow_upward</span>
         </button>
     );
