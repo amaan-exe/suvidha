@@ -3,18 +3,21 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Our Services - Suvidha Travels | Taxi, Visa & Cab Services in Patna</title>
+    <title>About Us - Suvidha Travels | Best Travel Agency in Patna, Bihar</title>
 
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/logo.jpg">
 
-    <meta name="description" content="Explore our comprehensive travel services: Professional Taxi Services, Visa Assistance, and Cab Rentals in Patna. Reliable, affordable, and 24/7 available with Suvidha Travels." />
-    <meta name="keywords" content="taxi service Patna, visa service, cab rental services, travel services Patna, airport transfer, visa assistance, professional taxi" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Our Services - Suvidha Travels" />
-    <meta property="og:description" content="Explore our comprehensive travel services: Taxi Services, Visa Assistance, and Cab Rentals in Patna." />
+    <meta name="description" content="Learn about Suvidha Travels - a leading travel agency in Patna, Bihar since 2010. Discover our mission, vision, team expertise, and commitment to creating unforgettable travel experiences." />
+    <meta name="keywords" content="about Suvidha Travels, travel agency Patna, travel company Bihar, experienced travel professionals, travel expertise, local travel guide" />
+    <meta property="og:title" content="About Us - Suvidha Travels" />
+    <meta property="og:description" content="Learn about Suvidha Travels - a leading travel agency in Patna, Bihar. Discover our mission, vision, and team expertise." />
+    <meta property="og:image" content="https://suvidhatravels.com/images/logo.jpg" />
+    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://suvidhatravels.com/services.html" />
+    <meta name="author" content="Suvidha Travels" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://suvidhatravels.com/about.html" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,12 +56,41 @@
         .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; will-change: opacity, transform; }
         .lazy-load.visible { opacity: 1; transform: translateY(0); }
 
-        .service-card { 
+        .stat-box { 
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .service-card:hover { 
+        .stat-box:hover { 
             transform: translateY(-10px); 
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .team-card img {
+            transition: transform 0.3s ease;
+        }
+        .team-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .timeline-item {
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .value-icon {
+            transition: all 0.3s ease;
+        }
+        .value-icon:hover {
+            transform: scale(1.2) rotate(5deg);
         }
 
         @media (max-width: 640px) {
@@ -69,11 +101,41 @@
         }
     </style>
 
+    <!-- JSON-LD Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://suvidhatravels.com/#organization",
+      "name": "Suvidha Travels",
+      "alternateName": "Suvidha Travel Agency Patna",
+      "url": "https://suvidhatravels.com",
+      "logo": "https://suvidhatravels.com/images/logo.jpg",
+      "description": "Premier travel agency in Patna, Bihar established in 2010. Offering exclusive tour packages, visa assistance, taxi services, and cab rentals for domestic and international destinations.",
+      "image": "https://suvidhatravels.com/images/logo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Patna",
+        "addressRegion": "Bihar",
+        "postalCode": "800001",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$",
+      "telephone": "+91-9304010727",
+      "email": "suvidhatour@gmail.com",
+      "foundingDate": "2010",
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      }
+    }
+    </script>
+
 </head>
 <body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 overflow-x-hidden">
     <div id="root"></div>
 
-    <script src="dist/services-app.js" defer></script>
+    <script src="dist/about-app.js" defer></script>
 
 </body>
 </html>

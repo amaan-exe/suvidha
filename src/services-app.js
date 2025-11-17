@@ -1,6 +1,7 @@
 const { useState, useEffect, useRef } = React;
 
 function Header({ dark, toggle }) {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     return (
         <header className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4 flex justify-between items-center h-20">
@@ -19,9 +20,24 @@ function Header({ dark, toggle }) {
                     <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
                         <span className="material-symbols-outlined">{dark ? 'light_mode' : 'dark_mode'}</span>
                     </button>
-                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20some%20details?" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 inline-block">Plan Trip</a>
+                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                        <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
+                    </button>
+                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20some%20details?" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90">Plan Trip</a>
                 </div>
             </div>
+            {mobileMenuOpen && (
+                <nav className="md:hidden bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-gray-800 py-4">
+                    <div className="container mx-auto px-4 space-y-3">
+                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Home</a>
+                        <a href="services.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Services</a>
+                        <a href="packages.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Packages</a>
+                        <a href="gallery.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Gallery</a>
+                        <a href="contact.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Contact</a>
+                        <a href="https://wa.me/+919304010727?text=Hi!%20I%27m%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer" className="block py-2 px-4 bg-primary text-white rounded font-bold text-center hover:bg-primary/90 transition-colors">Plan Trip</a>
+                    </div>
+                </nav>
+            )}
         </header>
     );
 }
