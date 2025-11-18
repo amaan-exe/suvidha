@@ -51,263 +51,382 @@ const tourData = {
             { date: "Apr 05, 2026", package: "Standard", price: "$1,200" }
         ]
     },
-    bali: {
-        title: "Tropical Bali Escape",
-        heroImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200",
-        description: "Unwind in Bali's beaches, temples, and rice terraces. From Ubud's culture to Seminyak's luxury, experience island paradise.",
-        duration: "6 Days / 5 Nights",
-        price: "$1,500",
-        highlights: [
-            { icon: "palm_tree", title: "Ubud Monkey Forest", desc: "Explore sacred temples with playful monkeys." },
-            { icon: "waves", title: "Seminyak Beach", desc: "Sunset cocktails and world-class surfing." },
-            { icon: "spa", title: "Balinese Spa", desc: "Traditional healing massages." },
-            { icon: "local_florist", title: "Tegalalang Rice Terrace", desc: "Iconic green landscapes." }
-        ],
-        days: [
-            { 
-                title: "Day 1: Arrival in Denpasar", 
-                content: "Airport transfer to Ubud. Relax with a welcome Balinese massage. (Meals: Dinner)" 
-            },
-            { 
-                title: "Day 2: Ubud Cultural Tour", 
-                content: "Visit Monkey Forest, Tegallalang, and Goa Gajah. Evening Kecak dance show. (Meals: Breakfast, Lunch)" 
-            },
-            { 
-                title: "Day 3: Beach Day in Seminyak", 
-                content: "Transfer to Seminyak for beach relaxation and shopping. (Meals: Breakfast)" 
-            },
-            { 
-                title: "Day 4-6: Free Time & Departure", 
-                content: "Optional water sports, spa, or excursions. Departure from Denpasar. (Meals: Breakfast)" 
+    rajasthan: {
+    title: "Royal Rajasthan Heritage Tour",
+    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200",
+    description: "Explore the royal palaces, mighty forts, golden deserts, and vibrant culture of Rajasthan across Jaipur, Bikaner, Jaisalmer, and Jodhpur.",
+    duration: "6 Nights / 7 Days",
+    price: "₹80,000 – ₹95,000",
+
+    highlights: [
+        { icon: "account_balance", title: "Jaipur City Tour", desc: "Amber Fort, City Palace, Jantar Mantar, Hawa Mahal & more." },
+        { icon: "fort", title: "Golden Fort - Jaisalmer", desc: "Explore the living fort built with yellow sandstone." },
+        { icon: "landscape", title: "Sam Sand Dunes", desc: "Camel ride & cultural program in the Thar Desert." },
+        { icon: "hotel", title: "Handpicked Hotels", desc: "Stay in curated 3-star & 4-star properties." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Jaipur",
+            content: "Arrive at Jaipur Airport and transfer to the hotel. Visit Birla Temple, Patrika Gate, and Albert Hall Museum in the evening. Overnight stay in Jaipur. "
+        },
+        {
+            title: "Day 2: Jaipur Local Sightseeing",
+            content: "Full-day Jaipur tour including Amber Fort, Gaitore Cenotaphs, Jal Mahal (photo stop), City Palace, Jantar Mantar, and Hawa Mahal (photo stop). Overnight in Jaipur."
+        },
+        {
+            title: "Day 3: Jaipur → Bikaner",
+            content: "Drive to Bikaner (370 km / 7 hrs). On arrival, visit Junagarh Fort. Overnight stay in Bikaner.}"
+        },
+        {
+            title: "Day 4: Bikaner → Jaisalmer",
+            content: "Drive to Jaisalmer (330 km / 7 hrs). Visit the Golden Fort (Sonar Kella) and explore nearby markets. Overnight in Jaisalmer."
+        },
+        {
+            title: "Day 5: Jaisalmer Local & Desert Stay",
+            content: "Visit Salim Singh ki Haveli, Gadisar Lake, Patwon ki Haveli & Nathmal ki Haveli. Enjoy camel ride & Rajasthani cultural program at Sam Sand Dunes. Overnight stay in Desert Camp."
+        },
+        {
+            title: "Day 6: Jaisalmer → Jodhpur",
+            content: "Drive to Jodhpur (300 km / 5 hrs). Visit Mehrangarh Fort, Jaswant Thada & Umaid Bhawan Palace. Overnight stay in Jodhpur."
+        },
+        {
+            title: "Day 7: Departure from Jodhpur",
+            content: "After breakfast, check out and drop at Jodhpur Airport. Journey ends with beautiful memories. "
+        }
+    ],
+
+    hotelOptions: [
+        {
+            type: "4-Star Package",
+            price: "₹95,000",
+            hotels: {
+                jaipur: "Ramada by Wyndham Jaipur North / Similar",
+                bikaner: "Hotel Chirag / Similar",
+                jaisalmer_city: "Sairafort / Similar",
+                jaisalmer_desert: "Oasis Desert Camp / Similar",
+                jodhpur: "Madhuram Royal / Similar"
             }
-        ],
-        inclusions: [
-            "Round-Trip Flights from India",
-            "4-Star Resort Stays",
-            "Daily Breakfast",
-            "Airport Transfers",
-            "Cultural Tours"
-        ],
-        exclusions: [
-            "Visa Fees",
-            "Personal Shopping",
-            "Alcoholic Beverages",
-            "Extra Excursions"
-        ],
-        dates: [
-            { date: "Feb 01, 2026", package: "Standard", price: "$1,500" },
-            { date: "Jun 15, 2026", package: "Summer", price: "$1,650", special: "(Festival)" },
-            { date: "Oct 20, 2026", package: "Standard", price: "$1,500" }
-        ]
-    },
-    dubai: {
-        title: "Luxury Dubai Adventure",
-        heroImage: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200",
-        description: "From Burj Khalifa heights to desert dunes, experience Dubai's blend of futuristic luxury and Arabian charm.",
-        duration: "5 Days / 4 Nights",
-        price: "$1,800",
-        highlights: [
-            { icon: "account_balance", title: "Burj Khalifa", desc: "World's tallest building views." },
-            { icon: "terrain", title: "Desert Safari", desc: "Dune bashing and Bedouin dinner." },
-            { icon: "shopping_bag", title: "Dubai Mall", desc: "Aquarium and endless shopping." },
-            { icon: "local_activity", title: "Global Village", desc: "Cultural pavilions and fireworks." }
-        ],
-        days: [
-            { 
-                title: "Day 1: Arrival in Dubai", 
-                content: "Airport transfer to hotel. Evening Dubai Fountain show. (Meals: Dinner)" 
-            },
-            { 
-                title: "Day 2: City Tour & Burj Khalifa", 
-                content: "Visit Palm Jumeirah, Atlantis, and ascend Burj Khalifa. (Meals: Breakfast)" 
-            },
-            { 
-                title: "Day 3: Desert Safari", 
-                content: "Thrilling dune bash, camel ride, and BBQ. (Meals: Breakfast, Dinner)" 
-            },
-            { 
-                title: "Day 4-5: Free Shopping & Departure", 
-                content: "Explore malls and souks. Departure flight. (Meals: Breakfast)" 
+        },
+        {
+            type: "3-Star Package",
+            price: "₹80,000",
+            hotels: {
+                jaipur: "Hotel Wall Street / Similar",
+                bikaner: "Hotel Sagar / Similar",
+                jaisalmer_city: "Antra Inn / Similar",
+                jaisalmer_desert: "Oasis Desert Camp / Similar",
+                jodhpur: "Shri Ram Empire / Similar"
             }
-        ],
-        inclusions: [
-            "Visa Assistance",
-            "5-Star Hotel",
-            "Daily Breakfast",
-            "All Tours & Transfers",
-            "Desert Safari"
-        ],
-        exclusions: [
-            "Lunch/Dinner Unless Specified",
-            "Personal Expenses",
-            "Travel Insurance"
-        ],
-        dates: [
-            { date: "Jan 20, 2026", package: "Standard", price: "$1,800" },
-            { date: "Mar 10, 2026", package: "Premium", price: "$2,200", special: "(Festive)" },
-            { date: "Nov 05, 2026", package: "Standard", price: "$1,800" }
-        ]
-    },
-    maldives: {
-        title: "Romantic Maldives Getaway",
-        heroImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
-        description: "Crystal-clear waters, white-sand beaches, and luxury overwater villas — escape to the ultimate tropical paradise.",
-        duration: "4 Days / 3 Nights",
-        price: "$2,300",
-        highlights: [
-            { icon: "water", title: "Water Villas", desc: "Stay in premium overwater bungalows." },
-            { icon: "pool", title: "Snorkeling", desc: "Explore vibrant coral reefs." },
-            { icon: "spa", title: "Spa Therapy", desc: "Relax with ocean-view spa sessions." },
-            { icon: "directions_boat", title: "Sunset Cruise", desc: "Romantic cruise with dolphins." }
-        ],
-        days: [
-            {
-                title: "Day 1: Arrival & Resort Check-in",
-                content: "Speedboat transfer, beach walk, candlelight dinner. (Meals: Dinner)"
-            },
-            {
-                title: "Day 2: Water Activities",
-                content: "Snorkeling, kayaking, glass-boat experience. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 3: Spa & Sunset Cruise",
-                content: "Couple spa session and evening cruise. (Meals: Breakfast, Dinner)"
-            },
-            {
-                title: "Day 4: Departure",
-                content: "Free time and return transfer. (Meals: Breakfast)"
+        }
+    ],
+
+    inclusions: [
+        "Accommodation for 6 Nights with Breakfast & Dinner ",
+        "1 Triple Sharing Room (for sample quotation) ",
+        "Dzire/Etios AC Vehicle for transfers & sightseeing",
+        "Fuel Charges, Parking, Toll Taxes, Driver Allowances",
+        "Airport Pickup (Jaipur) & Drop (Jodhpur)"
+    ],
+
+    exclusions: [
+        "Auto-rickshaw, Jeep ride, Elephant ride etc. ",
+        "Personal expenses (Laundry, Tips, Drinks) ",
+        "Meals not mentioned",
+        "Camera/Video fees",
+        "Optional/Extra activities",
+        "Personal & Travel Insurance",
+        "GST 5% "
+    ],
+
+    dates: [
+        { date: "Mar 30, 2026", package: "Family Trip", price: "₹80,000 – ₹95,000" }
+    ]
+}
+,
+
+    
+meghalaya: {
+    title: "Mesmerising Meghalaya & Assam Tour",
+    heroImage: "https://images.unsplash.com/photo-1589308078056-f21a6c512da8?q=80&w=1200",
+    description: "Experience the breathtaking canyons, crystal-clear rivers, living root bridges, charming villages, and vibrant culture across Shillong, Cherrapunji, Dawki, and Guwahati.",
+    duration: "5 Nights / 6 Days",
+    price: "₹1,11,245 – ₹1,53,577",
+
+    highlights: [
+        { icon: "landscape", title: "Laitlum Canyons", desc: "Unmatched panoramic views from Meghalaya’s grand canyon." },
+        { icon: "waterfall", title: "Krang Suri Falls", desc: "Swim in crystal blue waters and witness waterfalls up close." },
+        { icon: "eco", title: "Cleanest Village – Mawlynnong", desc: "Explore Asia’s cleanest village and Living Root Bridge." },
+        { icon: "waves", title: "Dawki River Boating", desc: "Boat over the transparent emerald waters of Umngot River." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Guwahati → Shillong",
+            content: "Arrive at Guwahati Airport/Railway Station and proceed to Shillong. En route stop at Umiam Lake. Evening visit Police Bazar. Overnight in Shillong. (Meals not specified)"
+        },
+        {
+            title: "Day 2: Shillong → Laitlum → Krang Suri → Shillong",
+            content: "Visit Laitlum Canyons for panoramic cliff views, then continue to Krang Suri Falls, one of Meghalaya’s most stunning waterfalls. Return to Shillong. "
+        },
+        {
+            title: "Day 3: Shillong → Mawlynnong → Dawki → Shillong",
+            content: "Visit Mawlynnong, the cleanest village in India, see the Living Root Bridge, then continue to Dawki for boating on the crystal-clear Umngot River. Return to Shillong."
+        },
+        {
+            title: "Day 4: Shillong → Cherrapunji → Shillong",
+            content: "Visit Cherrapunji attractions: Eco Park, Nohkalikai Falls, Seven Sisters Falls, Mawsmai Cave, Arwah Cave, and Garden of Caves (time permitting). Return to Shillong. "
+        },
+        {
+            title: "Day 5: Shillong → Guwahati",
+            content: "Drive to Guwahati with stops at Elephant Falls, Don Bosco Museum, and Ward’s Lake. Evening options: Brahmaputra River Cruise or shopping at Fancy Bazar. Overnight in Guwahati."
+        },
+        {
+            title: "Day 6: Departure",
+            content: "Early morning visit to Kamakhya Temple. After darshan, transfer to Guwahati Airport/Railway Station for departure."
+        }
+    ],
+
+    hotelOptions: [
+        {
+            type: "Option 1",
+            price: "₹1,11,245",
+            hotels: {
+                shillong: "The Eee Cee (4 Nights) - Deluxe",
+                guwahati: "Aarian Aatithya (1 Night) - Executive"
             }
-        ],
-        inclusions: [
-            "Luxury Overwater Villa",
-            "Daily Breakfast & Dinner",
-            "Snorkeling Gear",
-            "Airport Transfers",
-            "Sunset Cruise"
-        ],
-        exclusions: [
-            "Lunch",
-            "Personal Expenses",
-            "Travel Insurance"
-        ],
-        dates: [
-            { date: "Feb 15, 2026", package: "Standard", price: "$2,300" },
-            { date: "Apr 08, 2026", package: "Premium", price: "$2,900", special: "(Spring Special)" },
-            { date: "Oct 20, 2026", package: "Standard", price: "$2,300" }
-        ]
-    },
-    switzerland: {
-        title: "Scenic Switzerland Escape",
-        heroImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200",
-        description: "Snow-capped Alps, serene lakes, and charming European towns — discover Switzerland's breathtaking beauty.",
-        duration: "7 Days / 6 Nights",
-        price: "$3,500",
-        highlights: [
-            { icon: "landscape", title: "Mount Titlis", desc: "Cable car ride to snow paradise." },
-            { icon: "train", title: "Jungfraujoch", desc: "Visit the Top of Europe by rail." },
-            { icon: "camera_alt", title: "Lucerne Tour", desc: "Explore Chapel Bridge & Lion Monument." },
-            { icon: "directions_boat", title: "Lake Geneva", desc: "Relaxing cruise experience." }
-        ],
-        days: [
-            {
-                title: "Day 1: Arrival in Zurich",
-                content: "Transfer to Lucerne and evening leisure. (Meals: Dinner)"
-            },
-            {
-                title: "Day 2: Lucerne City Tour",
-                content: "Chapel Bridge, Old Town, Lake Lucerne. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 3: Mount Titlis",
-                content: "Rotair cable car ride and snow activities. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 4: Interlaken & Cruise",
-                content: "Scenic lake cruise and local exploration. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 5: Jungfraujoch",
-                content: "Excursion to the Top of Europe. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 6: Geneva City Tour",
-                content: "UN HQ, Jet d'Eau, Flower Clock. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 7: Departure",
-                content: "Return transfer to Zurich airport. (Meals: Breakfast)"
+        },
+        {
+            type: "Option 2",
+            price: "₹1,39,969",
+            hotels: {
+                shillong: "Nirvana Orchid (4 Nights) - Executive",
+                guwahati: "The Kalyaniz (1 Night) - Corporate"
             }
-        ],
-        inclusions: [
-            "4-Star Hotels",
-            "Daily Breakfast",
-            "Swiss Travel Pass",
-            "All Sightseeing Tours",
-            "Airport Transfers"
-        ],
-        exclusions: [
-            "Lunch/Dinner",
-            "Entry Fees Not Listed",
-            "Travel Insurance"
-        ],
-        dates: [
-            { date: "Jan 15, 2026", package: "Standard", price: "$3,500" },
-            { date: "May 02, 2026", package: "Premium", price: "$4,200", special: "(Summer)" },
-            { date: "Dec 10, 2026", package: "Standard", price: "$3,500" }
-        ]
-    },
-    paris: {
-        title: "Romantic Paris Experience",
-        heroImage: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200",
-        description: "Walk the charming streets of Paris, savor French cuisine, and witness iconic monuments like the Eiffel Tower.",
-        duration: "5 Days / 4 Nights",
-        price: "$2,100",
-        highlights: [
-            { icon: "location_city", title: "Eiffel Tower", desc: "Enjoy panoramic views of Paris." },
-            { icon: "museum", title: "Louvre Museum", desc: "World-famous art collection." },
-            { icon: "directions_boat", title: "Seine Cruise", desc: "Illuminated night cruise." },
-            { icon: "bakery_dining", title: "French Cuisine", desc: "Authentic pastries & dining." }
-        ],
-        days: [
-            {
-                title: "Day 1: Arrival & Eiffel Tower",
-                content: "Evening visit to Eiffel Tower. (Meals: Dinner)"
-            },
-            {
-                title: "Day 2: Louvre Museum",
-                content: "Explore Mona Lisa & French art. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 3: Versailles Tour",
-                content: "Royal Palace & stunning gardens. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 4: Seine Cruise & Montmartre",
-                content: "Cruise + Sacré-Cœur visit. (Meals: Breakfast)"
-            },
-            {
-                title: "Day 5: Departure",
-                content: "Shopping and airport transfer. (Meals: Breakfast)"
+        },
+        {
+            type: "Option 3",
+            price: "₹1,53,577",
+            hotels: {
+                shillong: "Windermere Inn (4 Nights) - Deluxe",
+                guwahati: "Ratnamouli Palace (1 Night) - Premier"
             }
-        ],
-        inclusions: [
-            "4-Star Hotel Stay",
-            "Daily Breakfast",
-            "Seine River Cruise",
-            "City Tour",
-            "Airport Transfers"
-        ],
-        exclusions: [
-            "Lunch/Dinner",
-            "Museum Tickets Not Listed",
-            "Travel Insurance"
-        ],
-        dates: [
-            { date: "Feb 05, 2026", package: "Standard", price: "$2,100" },
-            { date: "Jun 18, 2026", package: "Premium", price: "$2,700", special: "(Summer)" },
-            { date: "Sep 30, 2026", package: "Standard", price: "$2,100" }
-        ]
-    },
+        }
+    ],
+
+    inclusions: [
+        "3 Rooms on double sharing basis + 2 extra beds/mattress ",
+        "Daily Breakfast",
+        "Exclusive AC vehicle for transfers & sightseeing",
+        "Experienced driver",
+        "Parking, tolls, driver allowance"
+    ],
+
+    exclusions: [
+        "Personal expenses (Laundry, tips, drink",
+        "Additional sightseeing or extra vehicle use",
+        "Camera fees, Guide charges, Entrance fees",
+        "Tour escort charges",
+        "Costs due to natural calamities, political issues, road blocks",
+        "Increase in fuel/taxes",
+        "GST & Insurance",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "May (Last Week) 2026", package: "Family Group Tour", price: "₹1,11,245 – ₹1,53,577" }
+    ]
+}
+,
+shimla_kullu_manali: {
+    title: "Shimla - Kullu - Manali",
+    heroImage: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹19,999",
+
+    highlights: ["No info available"],
+
+    days: ["No info available"],
+
+    hotelOptions: ["No info available"],
+
+    inclusions: ["No info available"],
+
+    exclusions: ["No info available"],
+
+    dates: ["No info available"]
+}
+,
+gangtok_darjeeling: {
+    title: "Gangtok and Darjeeling",
+    heroImage: "https://images.unsplash.com/photo-1606228281437-7df9d2e1aaf4?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹19,000",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+gangtok_tour: {
+    title: "Gangtok Tour",
+    heroImage: "https://images.unsplash.com/photo-1549893073-4d7d4a3a8e30?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹9,500",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+
+manali_tour: {
+    title: "Manali Tour",
+    heroImage: "https://images.unsplash.com/photo-1614449743193-82f34154b69d?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹7,999",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+sri_lanka: {
+    title: "Sri Lanka Tour",
+    heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹20,000",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+nepal: {
+    title: "Nepal Tour",
+    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹19,999",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+goa: {
+    title: "Goa Tour",
+    heroImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹50,000",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+kerala: {
+    title: "Kerala Tour",
+    heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹50,000",
+
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
+}
+,
+
+    goa: {
+    title: "Goa Beach Escape",
+    heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
+    description: "Enjoy sun-soaked beaches, vibrant nightlife, Portuguese heritage, and scenic coastal beauty with this short and refreshing Goa getaway.",
+    duration: "2 Nights / 3 Days",
+    price: "₹7,550 – ₹9,000",
+
+    highlights: [
+        { icon: "beach_access", title: "South Goa Tour", desc: "Explore Miramar Beach, churches, temples, and Dona Paula viewpoint." },
+        { icon: "landscape", title: "North Goa Tour", desc: "Visit Baga, Calangute, Aguada Fort, and stunning coastal stretches." },
+        { icon: "restaurant", title: "Meals Included", desc: "Daily breakfast and dinners as per itinerary." },
+        { icon: "directions_car", title: "Hotel Transfers", desc: "Private transfers from Goa Airport/Railway Station." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Goa",
+            content: "Pickup from Goa Railway Station and transfer to the hotel. Check-in and enjoy your dinner at the hotel. (Meals: Dinner)"
+        },
+        {
+            title: "Day 2: South Goa Tour",
+            content: "After breakfast, enjoy a full South Goa sightseeing tour covering churches, temples, Miramar Beach and more. Return to hotel. (Meals: Breakfast, Dinner) "
+        },
+        {
+            title: "Day 3: North Goa Tour & Departure",
+            content: "After breakfast, head out for North Goa sightseeing, including popular beaches and forts. After the tour, transfer to Goa Railway Station. (Meals: Breakfast) "
+        }
+    ],
+
+    inclusions: [
+        "2 Nights stay at WS Beach Resort & Spa / Similar (Triple Sharing) ",
+        "Meals as mentioned: Breakfast & Dinner",
+        "1 Day South Goa Tour",
+        "1 Day North Goa Tour",
+        "Transfer from Goa Airport/Railway Station to Hotel",
+        "Transfer from Hotel to Goa Airport/Railway Station"
+    ],
+
+    exclusions: [
+        "Anything not mentioned in inclusions",
+        "Entry Tickets",
+        "Water Sports",
+        "Extra Meals",
+        "Flight Ticket",
+        "Insurance",
+        "GST 5% "
+    ],
+
+    optionalCosts: [
+        { item: "Dinner Cruise", price: "₹1,800 per person" }
+    ],
+
+    priceOptions: [
+        { type: "Without Early Check-in", price: "₹7,550 per person" },
+        { type: "With Early Check-in", price: "₹9,000 per person" }
+    ],
+
+    dates: [
+        { date: "Aug 19, 2025", package: "Group Tour", price: "₹7,550 – ₹9,000" }
+    ]
+}
+,
     default: {
         title: "Enchanting Kashmir Tour",
         heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200",

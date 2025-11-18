@@ -1,5 +1,53 @@
 const { useState, useEffect, useRef } = React;
 
+function OpenStreetMap() {
+    const mapRef = useRef(null);
+    const mapInstance = useRef(null);
+
+    useEffect(() => {
+        // Initialize map only if Leaflet is available
+        if (typeof L !== 'undefined' && mapRef.current) {
+            // Create map instance
+            if (!mapInstance.current) {
+                mapInstance.current = L.map(mapRef.current).setView([25.6113, 85.1369], 15);
+                
+                // Add OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(mapInstance.current);
+                
+                // Add marker for Suvidha Travels
+                L.marker([25.6113, 85.1369], {
+                    title: 'Suvidha Travels - Patna, Bihar'
+                }).addTo(mapInstance.current)
+                    .bindPopup('<strong>Suvidha Travels</strong><br/>Patna, Bihar - 800001<br/>📞 +91 93040 10727<br/>📧 suvidhatour@gmail.com')
+                    .openPopup();
+            }
+            
+            // Trigger resize to ensure map renders properly
+            setTimeout(() => {
+                if (mapInstance.current) {
+                    mapInstance.current.invalidateSize();
+                }
+            }, 100);
+        }
+
+        return () => {
+            // Cleanup is handled by React
+        };
+    }, []);
+
+    return (
+        <div 
+            ref={mapRef}
+            className="map-container bg-gray-200 dark:bg-gray-800 mt-8 rounded-lg overflow-hidden shadow-lg"
+            style={{ height: '24rem', width: '100%' }}
+            title="Suvidha Travels Location Map - OpenStreetMap - Patna, Bihar"
+        />
+    );
+}
+
 function Header({ dark, toggle }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     return (
@@ -10,31 +58,31 @@ function Header({ dark, toggle }) {
                     <h2 className="text-xl font-bold">Suvidha Travels</h2>
                 </a>
                 <nav className="hidden md:flex gap-8 text-sm font-medium">
-                    <a href="index.html" className="hover:text-primary">Home</a>
-                    <a href="services.html" className="hover:text-primary">Services</a>
-                    <a href="packages.html" className="hover:text-primary">Packages</a>
-                    <a href="gallery.html" className="hover:text-primary">Gallery</a>
-                    <a href="contact.html" className="hover:text-primary text-primary font-bold">Contact</a>
+                    <a href="index.html" className="hover:text-primary transition-colors">Home</a>
+                    <a href="services.html" className="hover:text-primary transition-colors">Services</a>
+                    <a href="packages.html" className="hover:text-primary transition-colors">Packages</a>
+                    <a href="gallery.html" className="hover:text-primary transition-colors">Gallery</a>
+                    <a href="contact.html" className="hover:text-primary text-primary font-bold transition-colors">Contact</a>
                 </nav>
                 <div className="flex items-center gap-4">
-                    <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" aria-label="Toggle dark mode">
                         <span className="material-symbols-outlined">{dark ? 'light_mode' : 'dark_mode'}</span>
                     </button>
-                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" aria-label="Toggle menu">
                         <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
                     </button>
-                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20some%20details?" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90">Plan Trip</a>
+                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20some%20details?" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-all hover:shadow-lg">Plan Trip</a>
                 </div>
             </div>
             {mobileMenuOpen && (
-                <nav className="md:hidden bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-gray-800 py-4">
+                <nav className="md:hidden bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-gray-800 py-4 max-h-[calc(100vh-80px)] overflow-y-auto">
                     <div className="container mx-auto px-4 space-y-3">
-                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Home</a>
-                        <a href="services.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Services</a>
-                        <a href="packages.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Packages</a>
-                        <a href="gallery.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Gallery</a>
-                        <a href="contact.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Contact</a>
-                        <a href="https://wa.me/+919304010727?text=Hi!%20I%27m%20interested%20in%20contacting%20you." target="_blank" rel="noopener noreferrer" className="block py-2 px-4 bg-primary text-white rounded font-bold text-center hover:bg-primary/90 transition-colors">Plan Trip</a>
+                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Home</a>
+                        <a href="services.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Services</a>
+                        <a href="packages.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Packages</a>
+                        <a href="gallery.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Gallery</a>
+                        <a href="contact.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Contact</a>
+                        <a href="https://wa.me/+919304010727?text=Hi!%20I%27m%20interested%20in%20contacting%20you." target="_blank" rel="noopener noreferrer" className="block w-full py-3 px-4 bg-primary text-white rounded-lg font-bold text-center hover:bg-primary/90 transition-all mt-4 text-base">Plan Trip</a>
                     </div>
                 </nav>
             )}
@@ -149,18 +197,7 @@ function Contact() {
                         </div>
 
                         {/* Map */}
-                        <div className="map-container bg-gray-200 mt-8">
-                            <iframe
-                                title="Suvidha Travels Location Map - Patna, Bihar"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2906364133873!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e0!3m2!1sen!2sin!4v1700000000000"
-                                width="100%"
-                                height="100%"
-                                style={{border: 0}}
-                                allowFullScreen=""
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
-                        </div>
+                        <OpenStreetMap />
                     </div>
 
                     {/* Inquiry Form */}

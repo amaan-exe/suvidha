@@ -2,22 +2,65 @@
 <html class="light" lang="en">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>About Us - Suvidha Travels | Best Travel Agency in Patna, Bihar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes"/>
+    <meta name="theme-color" content="#1392ec"/>
+    <title>About Suvidha Travels | Trusted Travel Agency in Patna, Bihar Since 2010</title>
 
+    <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/logo.jpg">
 
-    <meta name="description" content="Learn about Suvidha Travels - a leading travel agency in Patna, Bihar since 2010. Discover our mission, vision, team expertise, and commitment to creating unforgettable travel experiences." />
-    <meta name="keywords" content="about Suvidha Travels, travel agency Patna, travel company Bihar, experienced travel professionals, travel expertise, local travel guide" />
-    <meta property="og:title" content="About Us - Suvidha Travels" />
-    <meta property="og:description" content="Learn about Suvidha Travels - a leading travel agency in Patna, Bihar. Discover our mission, vision, and team expertise." />
-    <meta property="og:image" content="https://suvidhatravels.com/images/logo.jpg" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover Suvidha Travels - your trusted travel partner in Patna, Bihar since 2010. 5000+ happy travelers, 50+ destinations, expert team. Read our mission, vision, and why we're Bihar's leading travel agency." />
+    <meta name="keywords" content="about Suvidha Travels, travel agency Patna, travel company Bihar, experienced travel professionals, travel expertise, Patna tour operator, travel consultants, travel company, trusted travel agency" />
     <meta name="author" content="Suvidha Travels" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="About Suvidha Travels | Trusted Travel Agency in Patna" />
+    <meta property="og:description" content="Discover our 14+ years of travel expertise, 5000+ happy travelers, and 50+ destinations. Meet our expert team and learn our mission to make travel accessible to all." />
+    <meta property="og:image" content="https://suvidhatravels.com/images/logo.jpg" />
+    <meta property="og:url" content="https://suvidhatravels.com/about.html" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Suvidha Travels - Patna's Trusted Travel Agency" />
+    <meta name="twitter:description" content="Discover our journey, mission, vision, and expert team dedicated to creating unforgettable travel experiences." />
+    <meta name="twitter:image" content="https://suvidhatravels.com/images/logo.jpg" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Suvidha Travels",
+      "image": "https://suvidhatravels.com/images/logo.jpg",
+      "description": "Leading travel agency in Patna, Bihar offering curated tour packages and travel services.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Patna",
+        "addressRegion": "Bihar",
+        "postalCode": "800001",
+        "addressCountry": "IN"
+      },
+      "telephone": "+919304010727",
+      "email": "suvidhatour@gmail.com",
+      "sameAs": ["https://suvidhatravels.com"],
+      "foundingDate": "2010",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "500+"
+      }
+    }
+    </script>
+    
     <link rel="canonical" href="https://suvidhatravels.com/about.html" />
+    <link rel="alternate" hreflang="en-in" href="https://suvidhatravels.com/about.html" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,52 +94,175 @@
 
         #scrollBar { position: fixed; top: 0; left: 0; height: 4px; background: #1392ec; width: 0; z-index: 40; pointer-events: none; }
 
+        /* Fade In Animation */
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; will-change: opacity, transform; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        /* Lazy Load Animation */
         .lazy-load { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; will-change: opacity, transform; }
         .lazy-load.visible { opacity: 1; transform: translateY(0); }
 
+        /* Stat Boxes with Bounce */
         .stat-box { 
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .stat-box:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .team-card {
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, rgba(19, 146, 236, 0.1), rgba(19, 146, 236, 0.05));
+            border: 1px solid rgba(19, 146, 236, 0.2);
+            border-radius: 12px;
+            position: relative;
             overflow: hidden;
         }
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .stat-box:hover::before {
+            left: 100%;
+        }
+        .stat-box:hover { 
+            transform: translateY(-12px) scale(1.02); 
+            box-shadow: 0 24px 48px rgba(19, 146, 236, 0.2);
+            background: linear-gradient(135deg, rgba(19, 146, 236, 0.15), rgba(19, 146, 236, 0.08));
+        }
+
+        .stat-number {
+            animation: countUp 2s ease-out forwards;
+            font-size: 2.5rem;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Team Card Animations */
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(19, 146, 236, 0.05), rgba(19, 146, 236, 0.02));
+        }
         .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 24px 48px rgba(19, 146, 236, 0.25);
         }
         .team-card img {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .team-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15) rotate(2deg);
+        }
+        .team-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1392ec, #1392ec80);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .team-card:hover .overlay {
+            transform: translateY(0);
         }
 
-        .timeline-item {
-            transition: all 0.3s ease;
-        }
-        .timeline-item:hover {
-            transform: translateX(10px);
-        }
-
+        /* Value Icons */
         .value-icon {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
         }
         .value-icon:hover {
-            transform: scale(1.2) rotate(5deg);
+            transform: scale(1.25) rotate(8deg);
+            filter: drop-shadow(0 8px 16px rgba(19, 146, 236, 0.3));
+        }
+
+        /* Timeline Animations */
+        .timeline-item {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .timeline-item:hover {
+            transform: translateX(12px);
+        }
+        .timeline-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(19, 146, 236, 0.7); }
+            50% { box-shadow: 0 0 0 8px rgba(19, 146, 236, 0); }
+        }
+
+        /* Parallax Effect for Hero */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #1392ec, #06a9f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Button Animation */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #1392ec, #06a9f5, #1392ec);
+            margin: 2rem auto;
+            width: 60px;
         }
 
         @media (max-width: 640px) {
             .hero h1 { 
                 font-size: 2rem !important; 
                 line-height: 1.3 !important;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .stat-box:hover {
+                transform: translateY(-8px);
+            }
+            .team-card:hover {
+                transform: translateY(-8px);
             }
         }
     </style>

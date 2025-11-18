@@ -1,5 +1,54 @@
 const { useState, useEffect, useRef } = React;
 
+// OpenStreetMap Component using Leaflet
+function OpenStreetMap() {
+    const mapRef = useRef(null);
+    const mapInstance = useRef(null);
+
+    useEffect(() => {
+        // Initialize map only if Leaflet is available
+        if (typeof L !== 'undefined' && mapRef.current) {
+            // Create map instance
+            if (!mapInstance.current) {
+                mapInstance.current = L.map(mapRef.current).setView([25.6113, 85.1369], 15);
+                
+                // Add OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(mapInstance.current);
+                
+                // Add marker for Suvidha Travels
+                L.marker([25.6113, 85.1369], {
+                    title: 'Suvidha Travels - Patna, Bihar'
+                }).addTo(mapInstance.current)
+                    .bindPopup('<strong>Suvidha Travels</strong><br/>Patna, Bihar - 800001<br/>📞 +91 93040 10727<br/>📧 suvidhatour@gmail.com')
+                    .openPopup();
+            }
+            
+            // Trigger resize to ensure map renders properly
+            setTimeout(() => {
+                if (mapInstance.current) {
+                    mapInstance.current.invalidateSize();
+                }
+            }, 100);
+        }
+
+        return () => {
+            // Cleanup is handled by React
+        };
+    }, []);
+
+    return (
+        <div 
+            ref={mapRef}
+            className="map-container bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+            style={{ height: '24rem', width: '100%' }}
+            title="Suvidha Travels Location Map - OpenStreetMap - Patna, Bihar"
+        />
+    );
+}
+
 // Particles - Optimized: Fewer particles
 function Particles() {
     const canvas = useRef(null);
@@ -112,30 +161,30 @@ function Header({ dark, toggle }) {
                     <a href="index.html" className="hover:text-primary">Home</a>
                     <a href="services.html" className="hover:text-primary">Services</a>
                     <a href="packages.html" className="hover:text-primary">Packages</a>
-                    <a href="index.html#about" className="hover:text-primary">About</a>
+                    <a href="about.html" className="hover:text-primary">About</a>
                     <a href="gallery.html" className="hover:text-primary">Gallery</a>
                     <a href="contact.html" className="hover:text-primary">Contact</a>
                 </nav>
                 <div className="flex items-center gap-4">
-                    <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <button onClick={toggle} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" aria-label="Toggle dark mode">
                         <span className="material-symbols-outlined">{dark ? 'light_mode' : 'dark_mode'}</span>
                     </button>
-                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                    <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" aria-label="Toggle menu">
                         <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
                     </button>
-                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90">Plan Trip</a>
+                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services%20and%20I%20have%20a%20few%20questions.%20Could%20you%20please%20share%20some%20details%20when%20you%E2%80%99re%20free?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="hidden sm:inline-block px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-all hover:shadow-lg">Plan Trip</a>
                 </div>
             </div>
             {mobileMenuOpen && (
-                <nav className="md:hidden bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-gray-800 py-4">
+                <nav className="md:hidden bg-background-light/95 dark:bg-background-dark/95 border-t border-gray-200 dark:border-gray-800 py-4 max-h-[calc(100vh-80px)] overflow-y-auto">
                     <div className="container mx-auto px-4 space-y-3">
-                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Home</a>
-                        <a href="services.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Services</a>
-                        <a href="packages.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Packages</a>
-                        <a href="index.html#about" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">About</a>
-                        <a href="gallery.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Gallery</a>
-                        <a href="contact.html" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">Contact</a>
-                        <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20exploring%20your%20travel%20packages." target="_blank" rel="noopener noreferrer" className="block py-2 px-4 bg-primary text-white rounded font-bold text-center hover:bg-primary/90 transition-colors">Plan Trip</a>
+                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Home</a>
+                        <a href="services.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Services</a>
+                        <a href="packages.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Packages</a>
+                        <a href="about.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">About</a>
+                        <a href="gallery.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Gallery</a>
+                        <a href="contact.html" onClick={() => setMobileMenuOpen(false)} className="block py-3 px-4 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors font-medium text-base">Contact</a>
+                        <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20exploring%20your%20travel%20packages." target="_blank" rel="noopener noreferrer" className="block w-full py-3 px-4 bg-primary text-white rounded-lg font-bold text-center hover:bg-primary/90 transition-all mt-4 text-base">Plan Trip</a>
                     </div>
                 </nav>
             )}
@@ -221,9 +270,9 @@ function Hero() {
                     {currentText !== phrases[phraseIndex] || isDeleting ? '' : '|'}
                 </h1>
                 <p className="mt-4 text-lg fade-in visible">Your next unforgettable journey begins here.</p>
-                <div className="mt-8 flex gap-4">
-                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20exploring%20your%20travel%20packages.%20Could%20you%20please%20share%20some%20details?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors inline-block">Explore Packages</a>
-                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20contact%20details%20and%20available%20packages?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-primary transition-colors inline-block">Contact Us</a>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+                    <a href="packages.html"  rel="noopener noreferrer" className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors inline-block w-full sm:w-auto text-center">Explore Packages</a>
+                    <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20your%20travel%20services.%20Could%20you%20please%20share%20contact%20details%20and%20available%20packages?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-primary transition-colors inline-block w-full sm:w-auto text-center">Contact Us</a>
                 </div>
             </div>
             <div id="dots" className="absolute bottom-6 flex gap-2 z-20" style={{left: '50%', transform: 'translateX(-50%)'}}>
@@ -235,18 +284,21 @@ function Hero() {
 
 function Destinations() {
     const trayRef = useRef(null);
-    const dests = [
-        {name:"Bali",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Dubai",img:"https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200"},
-        {name:"Paris",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
-        {name:"Kashmir",img:"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-        {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Maldives",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {name:"Switzerland",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"}
-    ];
+    const dests =[
+    {name: "Goa", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"},
+    {name: "Kashmir", img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
+    {name: "Rajasthan", img: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200"},
+    {name: "Meghalaya", img: "https://images.unsplash.com/photo-1589308078056-f21a6c512da8?q=80&w=1200"},
+    {name: "Assam", img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200"},
+    
+    {name: "Shimla_Kullu_Manali", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200"},
+    {name: "Gangtok_Darjeeling", img: "https://images.unsplash.com/photo-1606228281437-7df9d2e1aaf4?q=80&w=1200"},
+    {name: "Gangtok_Tour", img: "https://images.unsplash.com/photo-1549893073-4d7d4a3a8e30?q=80&w=1200"},
+    {name: "Manali_Tour", img: "https://images.unsplash.com/photo-1614449743193-82f34154b69d?q=80&w=1200"},
+    {name: "Sri_Lanka", img: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200"},
+    {name: "Nepal", img: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200"}
+];
+
 
     const scrollLeft = () => {
         if (trayRef.current) {
@@ -288,7 +340,7 @@ function Destinations() {
 function Packages() {
     const trayRef = useRef(null);
     const pkgs = [
-        {title:"Luxury Maldives Escape",duration:"7 Nights / 8 Days",desc:"Overwater villa with all meals",price:"$2,499",img:"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"},
+        {title:"Europe",duration:"as you ask",desc:"Overwater villa with all meals",price:"INR 80000",img:"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"},
         {title:"Romantic Paris Getaway",duration:"5 Nights / 6 Days",desc:"City of love with river cruise",price:"$1,800",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
         {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200"},
         {title:"Dubai Desert Safari",duration:"4 Nights / 5 Days",desc:"Thrilling adventures in the dunes",price:"$1,200",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
@@ -450,18 +502,7 @@ function Contact() {
                             </div>
                         </div>
                     </div>
-                    <div className="map-container bg-gray-200">
-                        <iframe
-                            title="Suvidha Travels Location Map - Patna, Bihar"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2906364133873!2d85.1369320509922!3d25.611394492553675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585ca49ba17b%3A0x7fea4825391451c7!2sSuvidha%20Tour%20And%20Travels!5e0!3m2!1sen!2sin!4v1700000000000"
-                            width="100%"
-                            height="100%"
-                            style={{border: 0}}
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        />
-                    </div>
+                    <OpenStreetMap />
                 </div>
             </div>
         </section>
@@ -478,7 +519,7 @@ function Footer() {
                         <p className="text-sm text-gray-400 mb-4">Based in Patna, Bihar. Unforgettable experiences since 2010. Your journey, our passion.</p>
                         <div className="flex gap-4">
                             <a
-                                href="https://www.instagram.com/suvidhatravels_//"
+                                href="https://www.instagram.com/suvidhatravels_/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-2xl text-white hover:text-primary transform hover:scale-125 transition-all duration-300"
@@ -519,18 +560,18 @@ function Footer() {
                         <h4 className="font-semibold uppercase mb-4">Quick Links</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
                             <li><a href="index.html" className="hover:text-white transition-colors">Home</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Destinations</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Packages</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                            <li><a href="packages.html" className="hover:text-white transition-colors">Destinations</a></li>
+                            <li><a href="packages.html" className="hover:text-white transition-colors">Packages</a></li>
+                            <li><a href="about.html" className="hover:text-white transition-colors">About</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-semibold uppercase mb-4">Services</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-white transition-colors">Custom Tours</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Visa Assistance</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Car Rentals</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Hotel Bookings</a></li>
+                            <li><a href="packages.html" className="hover:text-white transition-colors">Custom Tours</a></li>
+                            <li><a href="services.html" className="hover:text-white transition-colors">Visa Assistance</a></li>
+                            <li><a href="services.html" className="hover:text-white transition-colors">Car Rentals</a></li>
+                            <li><a href="services.html" className="hover:text-white transition-colors">Taxi Services</a></li>
                         </ul>
                     </div>
                     <div>
@@ -556,10 +597,12 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p className="text-sm text-gray-500">© 2024 Suvidha Travels. All Rights Reserved.</p>
+                    <p className="text-sm text-gray-500">© 2025 Suvidha Travels. All Rights Reserved.</p>
                     <div className="flex gap-4 text-sm text-gray-500">
+                        <a href="#" className="hover:text-white transition-colors">Designed by Ignius Studios</a>
                         <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                        
                     </div>
                 </div>
             </div>
