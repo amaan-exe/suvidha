@@ -115,99 +115,7 @@ andaman: {
         { date: "Available Throughout the Year", package: "Port Blair 3D/2N Tour", price: "₹9,999 per person" }
     ]
 }
-,
-    rajasthan: {
-    title: "Royal Rajasthan Heritage Tour",
-    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200",
-    description: "Explore the royal palaces, mighty forts, golden deserts, and vibrant culture of Rajasthan across Jaipur, Bikaner, Jaisalmer, and Jodhpur.",
-    duration: "6 Nights / 7 Days",
-    price: "₹80,000 – ₹95,000",
 
-    highlights: [
-        { icon: "account_balance", title: "Jaipur City Tour", desc: "Amber Fort, City Palace, Jantar Mantar, Hawa Mahal & more." },
-        { icon: "fort", title: "Golden Fort - Jaisalmer", desc: "Explore the living fort built with yellow sandstone." },
-        { icon: "landscape", title: "Sam Sand Dunes", desc: "Camel ride & cultural program in the Thar Desert." },
-        { icon: "hotel", title: "Handpicked Hotels", desc: "Stay in curated 3-star & 4-star properties." }
-    ],
-
-    days: [
-        {
-            title: "Day 1: Arrival in Jaipur",
-            content: "Arrive at Jaipur Airport and transfer to the hotel. Visit Birla Temple, Patrika Gate, and Albert Hall Museum in the evening. Overnight stay in Jaipur. "
-        },
-        {
-            title: "Day 2: Jaipur Local Sightseeing",
-            content: "Full-day Jaipur tour including Amber Fort, Gaitore Cenotaphs, Jal Mahal (photo stop), City Palace, Jantar Mantar, and Hawa Mahal (photo stop). Overnight in Jaipur."
-        },
-        {
-            title: "Day 3: Jaipur → Bikaner",
-            content: "Drive to Bikaner (370 km / 7 hrs). On arrival, visit Junagarh Fort. Overnight stay in Bikaner.}"
-        },
-        {
-            title: "Day 4: Bikaner → Jaisalmer",
-            content: "Drive to Jaisalmer (330 km / 7 hrs). Visit the Golden Fort (Sonar Kella) and explore nearby markets. Overnight in Jaisalmer."
-        },
-        {
-            title: "Day 5: Jaisalmer Local & Desert Stay",
-            content: "Visit Salim Singh ki Haveli, Gadisar Lake, Patwon ki Haveli & Nathmal ki Haveli. Enjoy camel ride & Rajasthani cultural program at Sam Sand Dunes. Overnight stay in Desert Camp."
-        },
-        {
-            title: "Day 6: Jaisalmer → Jodhpur",
-            content: "Drive to Jodhpur (300 km / 5 hrs). Visit Mehrangarh Fort, Jaswant Thada & Umaid Bhawan Palace. Overnight stay in Jodhpur."
-        },
-        {
-            title: "Day 7: Departure from Jodhpur",
-            content: "After breakfast, check out and drop at Jodhpur Airport. Journey ends with beautiful memories. "
-        }
-    ],
-
-    hotelOptions: [
-        {
-            type: "4-Star Package",
-            price: "₹95,000",
-            hotels: {
-                jaipur: "Ramada by Wyndham Jaipur North / Similar",
-                bikaner: "Hotel Chirag / Similar",
-                jaisalmer_city: "Sairafort / Similar",
-                jaisalmer_desert: "Oasis Desert Camp / Similar",
-                jodhpur: "Madhuram Royal / Similar"
-            }
-        },
-        {
-            type: "3-Star Package",
-            price: "₹80,000",
-            hotels: {
-                jaipur: "Hotel Wall Street / Similar",
-                bikaner: "Hotel Sagar / Similar",
-                jaisalmer_city: "Antra Inn / Similar",
-                jaisalmer_desert: "Oasis Desert Camp / Similar",
-                jodhpur: "Shri Ram Empire / Similar"
-            }
-        }
-    ],
-
-    inclusions: [
-        "Accommodation for 6 Nights with Breakfast & Dinner ",
-        "1 Triple Sharing Room (for sample quotation) ",
-        "Dzire/Etios AC Vehicle for transfers & sightseeing",
-        "Fuel Charges, Parking, Toll Taxes, Driver Allowances",
-        "Airport Pickup (Jaipur) & Drop (Jodhpur)"
-    ],
-
-    exclusions: [
-        "Auto-rickshaw, Jeep ride, Elephant ride etc. ",
-        "Personal expenses (Laundry, Tips, Drinks) ",
-        "Meals not mentioned",
-        "Camera/Video fees",
-        "Optional/Extra activities",
-        "Personal & Travel Insurance",
-        "GST 5% "
-    ],
-
-    dates: [
-        { date: "Mar 30, 2026", package: "Family Trip", price: "₹80,000 – ₹95,000" }
-    ]
-}
 ,
 
     
@@ -301,26 +209,6 @@ meghalaya: {
     dates: [
         { date: "May (Last Week) 2026", package: "Family Group Tour", price: "₹1,11,245 – ₹1,53,577" }
     ]
-}
-,
-shimla_kullu_manali: {
-    title: "Shimla - Kullu - Manali",
-    heroImage: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹19,999",
-
-    highlights: ["No info available"],
-
-    days: ["No info available"],
-
-    hotelOptions: ["No info available"],
-
-    inclusions: ["No info available"],
-
-    exclusions: ["No info available"],
-
-    dates: ["No info available"]
 }
 ,
 gangtok_darjeeling: {
@@ -495,36 +383,6 @@ manali_tour: {
     ]
 }
 
-,
-sri_lanka: {
-    title: "Sri Lanka Tour",
-    heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹20,000",
-
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
-}
-,
-nepal: {
-    title: "Nepal Tour",
-    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹19,999",
-
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
-}
 ,
 goa: {
     title: "Explore Wonderful Goa",

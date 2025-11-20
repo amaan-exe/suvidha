@@ -212,72 +212,6 @@ function Mission() {
     );
 }
 
-function Team() {
-    const team = [
-        {
-            name: "Rajesh Kumar",
-            role: "Founder & CEO",
-            img: "https://i.pravatar.cc/150?img=1",
-            bio: "14+ years of travel industry expertise"
-        },
-        {
-            name: "Priya Singh",
-            role: "Head of Operations",
-            img: "https://i.pravatar.cc/150?img=5",
-            bio: "Expert in logistics and customer satisfaction"
-        },
-        {
-            name: "Amit Sharma",
-            role: "Travel Consultant Lead",
-            img: "https://i.pravatar.cc/150?img=3",
-            bio: "Passionate about creating personalized experiences"
-        },
-        {
-            name: "Neha Patel",
-            role: "Customer Service Manager",
-            img: "https://i.pravatar.cc/150?img=9",
-            bio: "Dedicated to 24/7 customer support excellence"
-        }
-    ];
-
-    return (
-        <section className="py-32 bg-white dark:bg-gray-900">
-            <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center mb-8 fade-in visible">Our Expert Team</h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 text-center mb-20 max-w-2xl mx-auto fade-in visible">
-                    Meet the passionate professionals behind every unforgettable journey. Our team brings decades of experience and genuine care for travel.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                    {team.map((member, i) => (
-                        <div key={i} className="team-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden lazy-load visible border border-gray-200 dark:border-gray-700 hover:border-primary/30 transition-all" style={{ animationDelay: `${i * 0.1}s` }}>
-                            <div className="relative overflow-hidden h-64">
-                                <img src={member.img} alt={`${member.name} - ${member.role}`} className="w-full h-full object-cover"/>
-                                <div className="overlay absolute inset-0 flex items-end justify-center p-4">
-                                    <div className="text-white text-center">
-                                        <p className="font-semibold text-sm">{member.bio}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="p-6 text-center">
-                                <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                                <p className="text-primary font-semibold text-sm mb-3">{member.role}</p>
-                                <div className="flex justify-center gap-3">
-                                    <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-xl">mail</span>
-                                    </a>
-                                    <a href="#" className="text-gray-400 hover:text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-xl">call</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-}
 
 function Footer() {
     return (
@@ -392,7 +326,6 @@ function App() {
                 <Hero />
                 <Journey />
                 <Mission />
-                <Team />
             </main>
             <Footer />
             <BackToTop />

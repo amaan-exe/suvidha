@@ -287,15 +287,11 @@ function Destinations() {
     const dests =[
     {name: "Goa", img: "images/goa.jpg"},
     {name: "Kashmir", img: "images/kashmir.jpg"},
-    {name: "Rajasthan", img: "images/raj.jpg"},
     {name: "Meghalaya", img: "images/megh.jpg"},
-    {name: "andaman", img: "images/anda.jpg"},
-    {name: "Shimla_Kullu_Manali", img: "images/shimla.jpg"},
+    {name: "andaman", img: "images/anda.jpg"},,
     {name: "Gangtok_Darjeeling", img: "images/darj.jpg"},
     {name: "Gangtok_Tour", img: "images/gang.jpg"},
-    {name: "Manali_Tour", img: "images/manali.jpg"},
-    {name: "Sri_Lanka", img: "images/sri.jpg"},
-    {name: "Nepal", img: "images/nepal.jpg"}
+    {name: "Manali_Tour", img: "images/manali.jpg"}
 ];
     const scrollLeft = () => {
         if (trayRef.current) {
@@ -594,12 +590,9 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p className="text-sm text-gray-500">© 2025 Suvidha Travels. All Rights Reserved.</p>
-                    <div className="flex gap-4 text-sm text-gray-500">
-                        <a href="#" className="hover:text-white transition-colors">Designed by Ignius Studios</a>
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                        
+                    <p className="text-sm text-white-500">© 2025 Suvidha Travels. All Rights Reserved.</p>
+                    <div className="flex gap-4 text-sm text-white-500">
+                        <a href="#" className="hover:text-blue transition-colors">Designed by Ignius Studios</a>
                     </div>
                 </div>
             </div>

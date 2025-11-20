@@ -55,15 +55,15 @@ function Hero() {
 
 function Gallery() {
     const images = [
-        { src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=600", title: "Mountain View" },
-        { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600", title: "Sunset Beach" },
-        { src: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=600", title: "Eiffel Tower" },
-        { src: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=600", title: "Dubai Skyline" },
-        { src: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=600", title: "Tropical Island" },
-        { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=600", title: "Paradise Beach" },
-        { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=600", title: "Snow Peak" },
-        { src: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600", title: "Desert Palace" },
-        { src: "https://images.unsplash.com/photo-1520607162513-77f6740bed9d?q=80&w=600", title: "Beach Paradise" },
+        { src: "images/anda.jpg", title: "Amazing Andaman" },
+        { src: "images/kashmir.jpg", title: "Heaven" },
+        { src: "images/gang.jpg", title: "Mountains" },
+        { src: "images/dubai.jpg", title: "Dubai Skyline" },
+        { src: "images/tash.jpg", title: "Tashkent" },
+        { src: "images/spain.jpg", title: "Perfecto!" },
+        { src: "images/darj.jpg", title: "Snow Peak" },
+        { src: "images/thai.jpg", title: "thai Palace" },
+        { src: "images/manali.jpg", title: "manali" },
     ];
 
     return (
