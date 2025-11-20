@@ -55,80 +55,124 @@ function Hero() {
 
 function Packages() {
     const domesticPackages = [
-        {
-            title: "Kashmir Paradise",
-            duration: "6 Nights / 7 Days",
-            desc: "Snow-capped peaks, pristine lakes, and lush meadows",
-            price: "$1,200",
-            img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"
-        },
-        {
-            title: "Goa Beach Escape",
-            duration: "4 Nights / 5 Days",
-            desc: "Golden beaches, water sports, and vibrant nightlife",
-            price: "$950",
-            img: "https://images.unsplash.com/photo-1520607162513-77f6740bed9d?q=80&w=1200"
-        },
-        {
-            title: "Himalayan Trek",
-            duration: "7 Nights / 8 Days",
-            desc: "Mountain peaks, trekking trails, and village experiences",
-            price: "$1,400",
-            img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200"
-        },
-        {
-            title: "Rajasthan Royal Tour",
-            duration: "5 Nights / 6 Days",
-            desc: "Majestic forts, palaces, and desert safaris",
-            price: "$1,100",
-            img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1200"
-        }
-    ];
+    {
+        title: "Kashmir Paradise",
+        duration: "5 Nights / 6 Days",
+        desc: "Snow-capped mountains, Dal Lake shikara rides, and lush valleys",
+        price: "₹19,999",
+        img: "images/kashmir.jpg"
+    },
+    {
+        title: "Goa Beach Escape",
+        duration: "3 Nights / 4 Days",
+        desc: "Golden beaches, nightlife, and North–South Goa sightseeing",
+        price: "₹9,999",
+        img: "images/goa.jpg"
+    },
+    {
+        title: "Gangtok Scenic Tour",
+        duration: "3 Nights / 4 Days",
+        desc: "Himalayan views, monasteries, city tour and MG Marg",
+        price: "₹9,499",
+        img: "images/gang.jpg"
+    },
+    {
+        title: "Gangtok + Darjeeling Duo",
+        duration: "4 Nights / 5 Days",
+        desc: "Tea gardens, Tiger Hill sunrise, monasteries & ropeway",
+        price: "₹18,999",
+        img: "images/darj.jpg"
+    },
+    {
+        title: "Manali Adventure Trip",
+        duration: "3 Nights / 4 Days",
+        desc: "Solang Valley, adventure sports, Hadimba Temple and snowfall views",
+        price: "₹9,999",
+        img: "images/manali.jpg"
+    },
+    {
+        title: "Nepal Highlights (Kathmandu + Pokhara)",
+        duration: "4 Nights / 5 Days",
+        desc: "Pashupatinath, Pokhara lakeside, caves, waterfalls and Himalayan views",
+        price: "₹14,999 – ₹24,999",
+        img: "images/nepal.jpg"
+    },
+    {
+        title: "Andaman Island Escape",
+        duration: "2 Nights / 3 Days",
+        desc: "Port Blair, Cellular Jail, Corbyn’s Cove & Ross + Coral Island",
+        price: "₹9,999",
+        img: "images/anda.jpg"
+    }
+]
+;
 
     const internationalPackages = [
-        {
-            title: "Maldives Dream",
-            duration: "7 Nights / 8 Days",
-            desc: "Overwater bungalows, crystal waters, and sun-kissed beaches",
-            price: "$2,499",
-            img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"
-        },
-        {
-            title: "Paris Romance",
-            duration: "5 Nights / 6 Days",
-            desc: "Eiffel Tower, river cruises, and fine dining",
-            price: "$1,800",
-            img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"
-        },
-        {
-            title: "Dubai Extravaganza",
-            duration: "4 Nights / 5 Days",
-            desc: "Skyscrapers, desert safari, and luxury shopping",
-            price: "$1,600",
-            img: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200"
-        },
-        {
-            title: "Bali Tropical",
-            duration: "6 Nights / 7 Days",
-            desc: "Rice terraces, temples, and tropical beaches",
-            price: "$1,350",
-            img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"
-        },
-        {
-            title: "Switzerland Alps",
-            duration: "6 Nights / 7 Days",
-            desc: "Alpine peaks, scenic trains, and charming villages",
-            price: "$2,100",
-            img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"
-        },
-        {
-            title: "Thailand Adventure",
-            duration: "5 Nights / 6 Days",
-            desc: "Bangkok temples, island hopping, and Thai cuisine",
-            price: "$1,450",
-            img: "https://images.unsplash.com/photo-1552520554-5fefe8c9ef14?q=80&w=1200"
-        }
-    ];
+    {
+        "title": "Maldives Dream",
+        "duration": "7 Nights / 8 Days",
+        "desc": "Overwater bungalows, crystal waters, and sun-kissed beaches",
+        "price": "₹2,09,900",
+        "img": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"
+    },
+    {
+        "title": "Paris Romance",
+        "duration": "5 Nights / 6 Days",
+        "desc": "Eiffel Tower, river cruises, and fine dining",
+        "price": "₹1,51,200",
+        "img": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"
+    },
+    {
+        "title": "Dubai Extravaganza",
+        "duration": "4 Nights / 5 Days",
+        "desc": "Skyscrapers, desert safari, and luxury shopping",
+        "price": "₹1,34,400",
+        "img": "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1200"
+    },
+    {
+        "title": "Bali Tropical",
+        "duration": "6 Nights / 7 Days",
+        "desc": "Rice terraces, temples, and tropical beaches",
+        "price": "₹1,13,400",
+        "img": "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"
+    },
+    {
+        "title": "Switzerland Alps",
+        "duration": "6 Nights / 7 Days",
+        "desc": "Alpine peaks, scenic trains, and charming villages",
+        "price": "₹1,76,400",
+        "img": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"
+    },
+    {
+        "title": "Thailand Adventure",
+        "duration": "5 Nights / 6 Days",
+        "desc": "Bangkok temples, island hopping, and Thai cuisine",
+        "price": "₹1,21,800",
+        "img": "https://images.unsplash.com/photo-1552520554-5fefe8c9ef14?q=80&w=1200"
+    },
+    {
+        "title": "Greece & Islands",
+        "duration": "9 Nights / 10 Days",
+        "desc": "Santorini sunsets, Athens city tour, Meteora monasteries & stunning islands",
+        "price": "₹2,19,300",
+        "img": "https://images.unsplash.com/photo-1505739717340-75d3a9eafd0c?q=80&w=1200"
+    },
+    {
+        "title": "Turkey Grand Tour",
+        "duration": "9 Nights / 10 Days",
+        "desc": "Istanbul mosques, Cappadocia hot-air balloons, Pamukkale & ancient ruins",
+        "price": "₹1,18,000",
+        "img": "https://images.unsplash.com/photo-1523978591478-c753949ff840?q=80&w=1200"
+    },
+    {
+        "title": "Kenya Wildlife Safari",
+        "duration": "7 Nights / 8 Days",
+        "desc": "Maasai Mara safari, African wildlife, scenic savannah & cultural tours",
+        "price": "₹1,49,999",
+        "img": "https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200"
+    }
+]
+;
 
     return (
         <section className="py-20 bg-white dark:bg-gray-900">

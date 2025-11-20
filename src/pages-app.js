@@ -3,54 +3,119 @@ const { useState, useEffect, useRef } = React;
 // Dynamic tour data template
 const tourData = {
     kashmir: {
-        title: "Enchanting Kashmir Tour",
-        heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200",
-        description: "Discover the paradise on earth with snow-capped mountains, lush valleys, Dal Lake houseboats, and serene Mughal gardens. Perfect for a romantic or family getaway.",
-        duration: "7 Days / 6 Nights",
-        price: "$1,200",
-        highlights: [
-            { icon: "terrain", title: "Dal Lake Shikara Ride", desc: "Glide through the iconic lake on traditional boats." },
-            { icon: "local_florist", title: "Tulips Garden", desc: "Wander through vibrant blooms in spring." },
-            { icon: "wb_sunny", title: "Pahalgam Meadows", desc: "Picnic amid betaab valley's lush greenery." },
-            { icon: "local_hotel", title: "Houseboat Stay", desc: "Luxurious overnight on the water." }
-        ],
-        days: [
-            { 
-                title: "Day 1: Arrival in Srinagar", 
-                content: "Arrive at Srinagar Airport, transfer to houseboat on Dal Lake. Enjoy a welcome shikara ride and Kashmiri dinner. (Meals: Dinner)" 
-            },
-            { 
-                title: "Day 2: Mughal Gardens Tour", 
-                content: "Visit Nishat Bagh, Shalimar Bagh, and Chashme Shahi. Afternoon free for shopping at Boulevard Road. (Meals: Breakfast, Lunch)" 
-            },
-            { 
-                title: "Day 3: Excursion to Gulmarg", 
-                content: "Drive to Gulmarg for gondola ride to Apharwat. Explore meadows and enjoy pony rides. (Meals: Breakfast, Lunch, Dinner)" 
-            },
-            { 
-                title: "Day 4-7: Pahalgam, Sonmarg & Departure", 
-                content: "Visit Betaab Valley, Aru Valley in Pahalgam. Day trip to Sonmarg for Thajiwas Glacier. Return to Srinagar for departure. (Meals: Daily Breakfast)" 
-            }
-        ],
-        inclusions: [
-            "Domestic Flights to Srinagar",
-            "3-Star Hotel & Houseboat Accommodation",
-            "English-Speaking Local Guides",
-            "Daily Breakfast & Select Meals",
-            "All Surface Transfers & Sightseeing"
-        ],
-        exclusions: [
-            "Personal Expenses & Shopping",
-            "Any Optional Activities",
-            "Travel Insurance",
-            "Meals Not Specified"
-        ],
-        dates: [
-            { date: "Dec 15, 2025", package: "Standard", price: "$1,200" },
-            { date: "Jan 10, 2026", package: "Winter Special", price: "$1,350", special: "(Snow Edition)" },
-            { date: "Apr 05, 2026", package: "Standard", price: "$1,200" }
-        ]
-    },
+    title: "Explore Wonderful Kashmir",
+    heroImage: "https://images.unsplash.com/photo-1524492412937-4961d66aa114?q=80&w=1200",
+    description: "Discover the serene beauty of Kashmir with snow-capped mountains, peaceful lakes, lush valleys, and charming landscapes across Srinagar, Gulmarg, Pahalgam, and Sonmarg.",
+    duration: "5 Nights / 6 Days",
+    price: "₹19,999 per person",
+
+    highlights: [
+        { icon: "downhill_skiing", title: "Gulmarg Day Trip", desc: "Experience meadows, snow views, and optional Gondola ride." },
+        { icon: "landscape", title: "Sonmarg Day Trip", desc: "Explore the 'Meadow of Gold' surrounded by glaciers and peaks." },
+        { icon: "hotel", title: "Comfort Stay", desc: "Stay in Srinagar hotel, houseboat, and Pahalgam." },
+        { icon: "directions_boat", title: "Shikara Experience", desc: "Optional peaceful Shikara ride on Dal Lake." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Srinagar",
+            content: "Arrive at Srinagar Airport and transfer to your hotel. Enjoy a relaxing evening with optional local sightseeing around Boulevard Road or Dal Lake."
+        },
+        {
+            title: "Day 2: Srinagar → Gulmarg → Srinagar",
+            content: "Full-day trip to Gulmarg, known for its meadows and snow valleys. Optional Gondola cable car ride (at extra cost). Return to Srinagar for overnight stay."
+        },
+        {
+            title: "Day 3: Srinagar → Sonmarg → Srinagar",
+            content: "Explore Sonmarg, ‘The Meadow of Gold’. Enjoy scenic landscapes and optional pony rides (at extra cost). Return to Srinagar for overnight stay."
+        },
+        {
+            title: "Day 4: Srinagar → Pahalgam",
+            content: "Drive to Pahalgam, known for rivers, valleys, and pine forests. Visit Aru & Betaab Valley (optional). Overnight stay in Pahalgam."
+        },
+        {
+            title: "Day 5: Pahalgam → Srinagar (Houseboat)",
+            content: "Return to Srinagar and check in to a traditional houseboat. Enjoy a peaceful evening with optional Shikara ride. Overnight at the houseboat."
+        },
+        {
+            title: "Day 6: Departure",
+            content: "Check out from the houseboat and transfer to Srinagar Airport for your onward journey."
+        }
+    ],
+
+    inclusions: [
+        "3 Night stay at Srinagar hotel",
+        "1 Night stay at Houseboat",
+        "1 Night stay at Pahalgam",
+        "Day trip to Gulmarg",
+        "Day trip to Sonmarg",
+        "Return Airport Transfer"
+    ],
+
+    exclusions: [
+        "Airfare or train tickets",
+        "Gondola ride, pony ride, rafting, or any adventure activities",
+        "Entrance fees, guide charges",
+        "Personal expenses (shopping, meals not included, snacks)",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Standard Kashmir Tour Package", price: "₹19,999 per person" }
+    ]
+}
+,
+andaman: {
+    title: "Explore Wonderful Andaman",
+    heroImage: "images/anda.jpg",
+    description: "Experience serene beaches, turquoise waters, historic sites, and island adventures with this short 3 Days / 2 Nights Andaman getaway based in Port Blair.",
+    duration: "3 Days / 2 Nights",
+    price: "₹9,999 per person",
+
+    highlights: [
+        { icon: "island", title: "Corbyn’s Cove Beach", desc: "Relax at one of Port Blair's most peaceful beaches." },
+        { icon: "history", title: "Cellular Jail", desc: "Explore the historic freedom-era prison and witness its legacy." },
+        { icon: "light_mode", title: "Light & Sound Show", desc: "Attend the famous evening show at Cellular Jail." },
+        { icon: "directions_boat", title: "Ross & Coral Island", desc: "Boat ride to beautiful islands known for reefs and scenery." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Port Blair",
+            content: "Arrive at Port Blair Airport and transfer to hotel. Visit Corbyn’s Cove Beach followed by the iconic Light & Sound Show at Cellular Jail. Overnight stay in Port Blair."
+        },
+        {
+            title: "Day 2: Ross Island & Coral Island Tour",
+            content: "After breakfast, head for a beautiful boat trip to Ross Island and Coral Island. Enjoy beaches, nature trails, and optional water activities (extra cost). Return to Port Blair for overnight stay."
+        },
+        {
+            title: "Day 3: Departure",
+            content: "Check out from the hotel and proceed to Port Blair Airport for your departure."
+        }
+    ],
+
+    inclusions: [
+        "2 Nights stay at Port Blair",
+        "Sightseeing at Corbyn’s Cove Beach",
+        "Visit to Cellular Jail",
+        "Light & Sound Show entry",
+        "Ross Island & Coral Island tour",
+        "Return Airport Transfer"
+    ],
+
+    exclusions: [
+        "Flight Ticket",
+        "Personal expenses (meals not included, drinks, shopping)",
+        "Water sports charges",
+        "Entry fees not mentioned",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Port Blair 3D/2N Tour", price: "₹9,999 per person" }
+    ]
+}
+,
     rajasthan: {
     title: "Royal Rajasthan Heritage Tour",
     heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200",
@@ -259,50 +324,177 @@ shimla_kullu_manali: {
 }
 ,
 gangtok_darjeeling: {
-    title: "Gangtok and Darjeeling",
-    heroImage: "https://images.unsplash.com/photo-1606228281437-7df9d2e1aaf4?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹19,000",
+    title: "Explore Wonderful Gangtok & Darjeeling",
+    heroImage: "images/darj.jpg",
+    description: "Experience the charm of the Eastern Himalayas with this scenic Gangtok and Darjeeling tour, featuring breathtaking viewpoints, monasteries, tea gardens, and the world-famous toy train.",
+    duration: "4 Nights / 5 Days",
+    price: "₹18,999 per person",
 
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
+    highlights: [
+        { icon: "terrain", title: "Gangtok City Tour", desc: "Explore monasteries, viewpoints, and cultural landmarks." },
+        { icon: "train", title: "Darjeeling Toy Train", desc: "Optional ride on the UNESCO Heritage Himalayan Railway." },
+        { icon: "photo_camera", title: "Tiger Hill Sunrise", desc: "Witness the golden sunrise over Mt. Kanchenjunga." },
+        { icon: "local_florist", title: "Tea Garden Views", desc: "Walk through picturesque Darjeeling tea estates." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Gangtok",
+            content: "Arrive at Bagdogra Airport/NJP Railway Station and transfer to Gangtok. Check in at the hotel and enjoy the evening at MG Marg. Overnight stay in Gangtok."
+        },
+        {
+            title: "Day 2: Gangtok Sightseeing",
+            content: "Visit Tashi Viewpoint, Ganesh Tok, Hanuman Tok, Bakthang Waterfall, Do Drul Chorten, Flower Exhibition Centre, and Ropeway (optional). Overnight in Gangtok."
+        },
+        {
+            title: "Day 3: Gangtok → Darjeeling",
+            content: "Drive to Darjeeling via scenic mountain routes. Evening free for strolls at Mall Road or local cafés. Overnight in Darjeeling."
+        },
+        {
+            title: "Day 4: Darjeeling Sightseeing",
+            content: "Early morning visit to Tiger Hill for sunrise, followed by visits to Ghoom Monastery, Batasia Loop, Himalayan Mountaineering Institute, Tea Garden, and Japanese Temple. Overnight stay in Darjeeling."
+        },
+        {
+            title: "Day 5: Departure",
+            content: "Check out and transfer to Bagdogra Airport/NJP Railway Station for onward journey."
+        }
+    ],
+
+    inclusions: [
+        "4 Nights / 5 Days stay",
+        "2 Nights stay in Gangtok",
+        "2 Nights stay in Darjeeling",
+        "Sightseeing in Gangtok & Darjeeling",
+        "Comfortable vehicle for transfers",
+        "Airport/Railway station pickup and drop"
+    ],
+
+    exclusions: [
+        "Airfare or train tickets",
+        "Nathula Pass visit (optional, extra cost)",
+        "Toy train ride (optional ticket)",
+        "Personal expenses (shopping, food not included)",
+        "Guide charges & entry fees",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Standard Gangtok–Darjeeling Tour", price: "₹18,999 per person" }
+    ]
 }
+
 ,
 gangtok_tour: {
-    title: "Gangtok Tour",
-    heroImage: "https://images.unsplash.com/photo-1549893073-4d7d4a3a8e30?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹9,500",
+    title: "Explore Wonderful Gangtok",
+    heroImage: "images/gang.jpg",
+    description: "Discover the beauty of the Eastern Himalayas with this affordable Gangtok tour featuring stunning viewpoints, monasteries, snow peaks, and peaceful landscapes.",
+    duration: "3 Nights / 4 Days (standard, customizable)", 
+    price: "₹9,499 per person",
 
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
+    highlights: [
+        { icon: "terrain", title: "Tashi View Point", desc: "Panoramic views of Mt. Kanchenjunga." },
+        { icon: "account_balance", title: "Ganesh Tok & Hanuman Tok", desc: "Popular hilltop temples with scenic views." },
+        { icon: "waterfall", title: "Bakthang Waterfall", desc: "Beautiful natural waterfall ideal for photography." },
+        { icon: "museum", title: "Do Drul Chorten & Museum", desc: "Explore sacred chorten and local culture exhibits." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Gangtok",
+            content: "Arrive at Bagdogra Airport or NJP Railway Station and transfer to Gangtok. Check in and spend the evening at MG Marg. Overnight stay in Gangtok."
+        },
+        {
+            title: "Day 2: Gangtok Local Sightseeing",
+            content: "Visit Tashi View Point, Ganesh Tok, Hanuman Tok, Bakthang Waterfall, Do Drul Chorten, Flower Exhibition Centre, Ropeway (optional), and local markets."
+        },
+        {
+            title: "Day 3: Optional Excursion (Tsomgo Lake & Baba Mandir)",
+            content: "Drive to the stunning Tsomgo Lake and visit Baba Harbhajan Mandir. (Additional cost; subject to permits and weather). Return to Gangtok for overnight stay."
+        },
+        {
+            title: "Day 4: Departure",
+            content: "Check out from the hotel and transfer to Bagdogra Airport/NJP Railway Station."
+        }
+    ],
+
+    inclusions: [
+        "Accommodation in Gangtok",
+        "Daily breakfast",
+        "Local sightseeing as per itinerary",
+        "Pickup & drop (Airport/Railway Station)",
+        "Comfortable vehicle for sightseeing"
+    ],
+
+    exclusions: [
+        "Airfare or train tickets",
+        "Tsomgo Lake & Baba Mandir (optional, extra cost)",
+        "Entry fees, guide charges",
+        "Personal expenses (shopping, meals not included)",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Gangtok Budget Tour", price: "₹9,499 per person" }
+    ]
 }
+
 ,
 
 manali_tour: {
-    title: "Manali Tour",
-    heroImage: "https://images.unsplash.com/photo-1614449743193-82f34154b69d?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹7,999",
+    title: "Wonderful Manali Tour",
+    heroImage: "images/manali.jpg",
+    description: "Enjoy snow-covered mountains, pine forests, adventure sports, scenic valleys, and peaceful rivers with this affordable Manali tour package.",
+    duration: "3 Nights / 4 Days (standard plan)",
+    price: "₹9,999 per person",
 
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
+    highlights: [
+        { icon: "ac_unit", title: "Solang Valley", desc: "Adventure activities like paragliding, ATV, skiing (seasonal)." },
+        { icon: "landscape", title: "Rohtang/Atal Tunnel (Optional)", desc: "Snow views and breathtaking mountain drives." },
+        { icon: "temple_hindu", title: "Hadimba Temple", desc: "Ancient wooden temple surrounded by cedar forests." },
+        { icon: "nature_people", title: "Club House & Vashisht", desc: "Hot springs, Tibetan monasteries, and river views." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Manali",
+            content: "Arrive in Manali by bus/cab and check in to hotel. After rest, explore Mall Road, Tibetan Market, and Van Vihar. Overnight stay in Manali."
+        },
+        {
+            title: "Day 2: Solang Valley / Atal Tunnel Excursion",
+            content: "Visit Solang Valley for adventure sports. Optional visit to Atal Tunnel & Sissu (extra charges may apply). Return to hotel for overnight stay."
+        },
+        {
+            title: "Day 3: Manali Local Sightseeing",
+            content: "Visit Hadimba Devi Temple, Vashisht Hot Springs, Club House, Jogini Waterfall viewpoint, and Old Manali Café street. Overnight in Manali."
+        },
+        {
+            title: "Day 4: Departure",
+            content: "Check out and depart for return journey via private cab or Volvo bus."
+        }
+    ],
+
+    inclusions: [
+        "Accommodation in Manali",
+        "Daily breakfast and dinner (depending on hotel)",
+        "Local sightseeing",
+        "Pickup & drop (Volvo stand or Manali city)",
+        "All taxes included"
+    ],
+
+    exclusions: [
+        "Transport from Delhi/Chandigarh to Manali (optional add-on)",
+        "Rohtang Pass permit charges",
+        "Adventure activities (paragliding, skiing, ATV etc.)",
+        "Entry fees, guide charges",
+        "Personal expenses",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Budget Manali Tour", price: "₹9,999 per person" }
+    ]
 }
+
 ,
 sri_lanka: {
     title: "Sri Lanka Tour",
@@ -335,21 +527,60 @@ nepal: {
 }
 ,
 goa: {
-    title: "Goa Tour",
-    heroImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200",
-    description: "No info available",
-    duration: "No info available",
-    price: "₹50,000",
+    title: "Explore Wonderful Goa",
+    heroImage: "images/goa.jpg",
+    description: "Relax on golden beaches, enjoy vibrant nightlife, explore historic churches, and experience the coastal charm of North and South Goa with this curated 3 Nights / 4 Days package.",
+    duration: "3 Nights / 4 Days",
+    price: "₹9,999 per person",
 
-    highlights: ["No info available"],
-    days: ["No info available"],
-    hotelOptions: ["No info available"],
-    inclusions: ["No info available"],
-    exclusions: ["No info available"],
-    dates: ["No info available"]
+    highlights: [
+        { icon: "beach_access", title: "North Goa Tour", desc: "Discover the famous beaches, forts, and vibrant markets of North Goa." },
+        { icon: "temple_hindu", title: "South Goa Tour", desc: "Visit serene beaches, heritage churches, and scenic viewpoints." },
+        { icon: "hotel", title: "Comfortable Stay", desc: "3-night stay at a hotel with daily breakfast included." },
+        { icon: "airport_shuttle", title: "Airport Transfer", desc: "Smooth and hassle-free round-trip airport transfers." }
+    ],
+
+    days: [
+        {
+            title: "Day 1: Arrival in Goa",
+            content: "Arrive at Goa Airport and receive a warm welcome. Transfer to your hotel for check-in. Spend the rest of the day relaxing on the beach or exploring nearby cafés and markets."
+        },
+        {
+            title: "Day 2: North Goa Tour",
+            content: "Explore Calangute Beach, Baga Beach, Anjuna Beach, Fort Aguada, and local flea markets. Enjoy water sports (optional, at personal cost). Return to hotel for overnight stay."
+        },
+        {
+            title: "Day 3: South Goa Tour",
+            content: "Visit Miramar Beach, Dona Paula View Point, Basilica of Bom Jesus, Se Cathedral, and Mangueshi Temple. Spend the evening at Colva Beach. Overnight in Goa."
+        },
+        {
+            title: "Day 4: Departure",
+            content: "Check out from the hotel. Enjoy some leisure time until transfer to the airport for your onward journey."
+        }
+    ],
+
+    inclusions: [
+        "3 Night stay at Hotel with Breakfast",
+        "Return Airport Transfer",
+        "1 Day South Goa Tour",
+        "1 Day North Goa Tour"
+    ],
+
+    exclusions: [
+        "Airfare or train tickets",
+        "Personal expenses (shopping, meals not mentioned, drinks)",
+        "Water sports or additional activities",
+        "Entrance fees at monuments",
+        "Anything not mentioned in inclusions"
+    ],
+
+    dates: [
+        { date: "Available Throughout the Year", package: "Standard Goa Tour Package", price: "₹9,999 per person" }
+    ]
 }
+
 ,
-kerala: {
+default: {
     title: "Kerala Tour",
     heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
     description: "No info available",
@@ -364,119 +595,22 @@ kerala: {
     dates: ["No info available"]
 }
 ,
-
-    goa: {
-    title: "Goa Beach Escape",
+    defkerala: {
+    title: "Kerala Tour",
     heroImage: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200",
-    description: "Enjoy sun-soaked beaches, vibrant nightlife, Portuguese heritage, and scenic coastal beauty with this short and refreshing Goa getaway.",
-    duration: "2 Nights / 3 Days",
-    price: "₹7,550 – ₹9,000",
+    description: "No info available",
+    duration: "No info available",
+    price: "₹50,000",
 
-    highlights: [
-        { icon: "beach_access", title: "South Goa Tour", desc: "Explore Miramar Beach, churches, temples, and Dona Paula viewpoint." },
-        { icon: "landscape", title: "North Goa Tour", desc: "Visit Baga, Calangute, Aguada Fort, and stunning coastal stretches." },
-        { icon: "restaurant", title: "Meals Included", desc: "Daily breakfast and dinners as per itinerary." },
-        { icon: "directions_car", title: "Hotel Transfers", desc: "Private transfers from Goa Airport/Railway Station." }
-    ],
-
-    days: [
-        {
-            title: "Day 1: Arrival in Goa",
-            content: "Pickup from Goa Railway Station and transfer to the hotel. Check-in and enjoy your dinner at the hotel. (Meals: Dinner)"
-        },
-        {
-            title: "Day 2: South Goa Tour",
-            content: "After breakfast, enjoy a full South Goa sightseeing tour covering churches, temples, Miramar Beach and more. Return to hotel. (Meals: Breakfast, Dinner) "
-        },
-        {
-            title: "Day 3: North Goa Tour & Departure",
-            content: "After breakfast, head out for North Goa sightseeing, including popular beaches and forts. After the tour, transfer to Goa Railway Station. (Meals: Breakfast) "
-        }
-    ],
-
-    inclusions: [
-        "2 Nights stay at WS Beach Resort & Spa / Similar (Triple Sharing) ",
-        "Meals as mentioned: Breakfast & Dinner",
-        "1 Day South Goa Tour",
-        "1 Day North Goa Tour",
-        "Transfer from Goa Airport/Railway Station to Hotel",
-        "Transfer from Hotel to Goa Airport/Railway Station"
-    ],
-
-    exclusions: [
-        "Anything not mentioned in inclusions",
-        "Entry Tickets",
-        "Water Sports",
-        "Extra Meals",
-        "Flight Ticket",
-        "Insurance",
-        "GST 5% "
-    ],
-
-    optionalCosts: [
-        { item: "Dinner Cruise", price: "₹1,800 per person" }
-    ],
-
-    priceOptions: [
-        { type: "Without Early Check-in", price: "₹7,550 per person" },
-        { type: "With Early Check-in", price: "₹9,000 per person" }
-    ],
-
-    dates: [
-        { date: "Aug 19, 2025", package: "Group Tour", price: "₹7,550 – ₹9,000" }
-    ]
+    highlights: ["No info available"],
+    days: ["No info available"],
+    hotelOptions: ["No info available"],
+    inclusions: ["No info available"],
+    exclusions: ["No info available"],
+    dates: ["No info available"]
 }
-,
-    default: {
-        title: "Enchanting Kashmir Tour",
-        heroImage: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200",
-        description: "Discover the paradise on earth with snow-capped mountains, lush valleys, Dal Lake houseboats, and serene Mughal gardens. Perfect for a romantic or family getaway.",
-        duration: "7 Days / 6 Nights",
-        price: "$1,200",
-        highlights: [
-            { icon: "terrain", title: "Dal Lake Shikara Ride", desc: "Glide through the iconic lake on traditional boats." },
-            { icon: "local_florist", title: "Tulips Garden", desc: "Wander through vibrant blooms in spring." },
-            { icon: "wb_sunny", title: "Pahalgam Meadows", desc: "Picnic amid betaab valley's lush greenery." },
-            { icon: "local_hotel", title: "Houseboat Stay", desc: "Luxurious overnight on the water." }
-        ],
-        days: [
-            { 
-                title: "Day 1: Arrival in Srinagar", 
-                content: "Arrive at Srinagar Airport, transfer to houseboat on Dal Lake. Enjoy a welcome shikara ride and Kashmiri dinner. (Meals: Dinner)" 
-            },
-            { 
-                title: "Day 2: Mughal Gardens Tour", 
-                content: "Visit Nishat Bagh, Shalimar Bagh, and Chashme Shahi. Afternoon free for shopping at Boulevard Road. (Meals: Breakfast, Lunch)" 
-            },
-            { 
-                title: "Day 3: Excursion to Gulmarg", 
-                content: "Drive to Gulmarg for gondola ride to Apharwat. Explore meadows and enjoy pony rides. (Meals: Breakfast, Lunch, Dinner)" 
-            },
-            { 
-                title: "Day 4-7: Pahalgam, Sonmarg & Departure", 
-                content: "Visit Betaab Valley, Aru Valley in Pahalgam. Day trip to Sonmarg for Thajiwas Glacier. Return to Srinagar for departure. (Meals: Daily Breakfast)" 
-            }
-        ],
-        inclusions: [
-            "Domestic Flights to Srinagar",
-            "3-Star Hotel & Houseboat Accommodation",
-            "English-Speaking Local Guides",
-            "Daily Breakfast & Select Meals",
-            "All Surface Transfers & Sightseeing"
-        ],
-        exclusions: [
-            "Personal Expenses & Shopping",
-            "Any Optional Activities",
-            "Travel Insurance",
-            "Meals Not Specified"
-        ],
-        dates: [
-            { date: "Dec 15, 2025", package: "Standard", price: "$1,200" },
-            { date: "Jan 10, 2026", package: "Winter Special", price: "$1,350", special: "(Snow Edition)" },
-            { date: "Apr 05, 2026", package: "Standard", price: "$1,200" }
-        ]
-    }
-};
+}
+;
 
 function Header({ dark, toggle, tour }) {
     return (

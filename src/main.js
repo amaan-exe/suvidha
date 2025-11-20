@@ -285,21 +285,18 @@ function Hero() {
 function Destinations() {
     const trayRef = useRef(null);
     const dests =[
-    {name: "Goa", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"},
-    {name: "Kashmir", img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"},
-    {name: "Rajasthan", img: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200"},
-    {name: "Meghalaya", img: "https://images.unsplash.com/photo-1589308078056-f21a6c512da8?q=80&w=1200"},
-    {name: "Assam", img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200"},
-    
-    {name: "Shimla_Kullu_Manali", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200"},
-    {name: "Gangtok_Darjeeling", img: "https://images.unsplash.com/photo-1606228281437-7df9d2e1aaf4?q=80&w=1200"},
-    {name: "Gangtok_Tour", img: "https://images.unsplash.com/photo-1549893073-4d7d4a3a8e30?q=80&w=1200"},
-    {name: "Manali_Tour", img: "https://images.unsplash.com/photo-1614449743193-82f34154b69d?q=80&w=1200"},
-    {name: "Sri_Lanka", img: "https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=1200"},
-    {name: "Nepal", img: "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200"}
+    {name: "Goa", img: "images/goa.jpg"},
+    {name: "Kashmir", img: "images/kashmir.jpg"},
+    {name: "Rajasthan", img: "images/raj.jpg"},
+    {name: "Meghalaya", img: "images/megh.jpg"},
+    {name: "andaman", img: "images/anda.jpg"},
+    {name: "Shimla_Kullu_Manali", img: "images/shimla.jpg"},
+    {name: "Gangtok_Darjeeling", img: "images/darj.jpg"},
+    {name: "Gangtok_Tour", img: "images/gang.jpg"},
+    {name: "Manali_Tour", img: "images/manali.jpg"},
+    {name: "Sri_Lanka", img: "images/sri.jpg"},
+    {name: "Nepal", img: "images/nepal.jpg"}
 ];
-
-
     const scrollLeft = () => {
         if (trayRef.current) {
             trayRef.current.scrollBy({ left: -220, behavior: 'smooth' });
@@ -340,11 +337,11 @@ function Destinations() {
 function Packages() {
     const trayRef = useRef(null);
     const pkgs = [
-        {title:"Europe",duration:"as you ask",desc:"Overwater villa with all meals",price:"INR 80000",img:"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200"},
-        {title:"Romantic Paris Getaway",duration:"5 Nights / 6 Days",desc:"City of love with river cruise",price:"$1,800",img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200"},
-        {title:"Himalayan Adventure Trek",duration:"10 Nights / 11 Days",desc:"Expert guides & permits",price:"$1,550",img:"https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200"},
-        {title:"Dubai Desert Safari",duration:"4 Nights / 5 Days",desc:"Thrilling adventures in the dunes",price:"$1,200",img:"https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200"},
-        {title:"Swiss Alps Retreat",duration:"6 Nights / 7 Days",desc:"Scenic trains and chocolate tours",price:"$2,100",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"}
+        {title:"Spain",duration:"10N / 11D ",desc:"Perfect trip to spain",price:"INR 168000",img:"images/spain.jpg"},
+        {title:"Explore Wonderful Tashkent",duration:"5 Nights / 6 Days",desc:"City of love with river cruise",price:"₹64000",img:"images/tash.jpg"},
+        {title:"Baku & Almaty trip ",duration:"6 Nights / 7 Days",desc:"Expert guides & permits",price:"INR 89000",img:"images/baku.jpg"},
+        {title:"Exquisite Thailand",duration:"4 Nights / 5 Days",desc:"Thrilling adventures in the Thailand",price:"INR 31000",img:"images/thai.jpg"},
+        {title:"Amazing Dubai",duration:"4 Nights / 5 Days",desc:"Thrilling adventures in the Dunes",price:"30000",img:"images/dubai.jpg"}
     ];
 
     const scrollLeft = () => {

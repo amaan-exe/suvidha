@@ -95,7 +95,11 @@ function Services() {
                                     </li>
                                 ))}
                             </ul>
-                            <button className="mt-8 w-full px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors">Enquire Now</button>
+                            <a href="https://wa.me/+919304010727?text=Hi!%20I%27m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer">
+                            <button className="mt-8 w-full px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors">
+                                Enquire Now
+                            </button>
+                        </a>
                         </div>
                     ))}
                 </div>
@@ -126,7 +130,9 @@ function Footer() {
                             <li><a href="#" className="hover:text-white transition-colors">Cab Rentals</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Tour Packages</a></li>
                         </ul>
+                        <br></br>
                     </div>
+                    
                     <div>
                         <h4 className="font-semibold uppercase mb-4">Contact Info</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
