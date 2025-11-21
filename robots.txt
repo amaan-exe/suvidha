@@ -1,30 +1,28 @@
-# Robots.txt for Suvidha Travels
-# Optimize crawling and indexing for search engines
+# ================================
+# Robots.txt — Suvidha Travels
+# Optimized for SEO & Crawl Budget
+# ================================
 
-# Allow all crawlers
 User-agent: *
 Allow: /
+
+# Block sensitive or unnecessary folders
 Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /assets/temp/
 Disallow: /cache/
+Disallow: /assets/temp/
+Disallow: /*.json$
 
-# Google-specific rules
+# Reduce server load (for non-Google crawlers)
+Crawl-delay: 1
+
+# Googlebot
 User-agent: Googlebot
 Allow: /
 
-# Bing-specific rules
+# Bingbot
 User-agent: Bingbot
 Allow: /
 
-# Other crawlers
-User-agent: *
-Crawl-delay: 1
-Request-rate: 30/60
-
-# Sitemap location
-Sitemap: https://suvidhatravels.com/sitemap.xml
-
-# Google Search Console and Bing Webmaster Tools verification
-# Note: Add your verification files in the root directory
+# Sitemap Location
+Sitemap: https://suvidhatravels.co.in/sitemap.xml

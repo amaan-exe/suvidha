@@ -18,11 +18,11 @@ function OpenStreetMap() {
                     maxZoom: 19
                 }).addTo(mapInstance.current);
                 
-                // Add marker for Suvidha Travels
+                // Add marker for Suvidha Tour and Travels 
                 L.marker([25.6113, 85.1369], {
-                    title: 'Suvidha Travels - Patna, Bihar'
+                    title: 'Suvidha Tour and Travels  - Patna, Bihar'
                 }).addTo(mapInstance.current)
-                    .bindPopup('<strong>Suvidha Travels</strong><br/>Patna, Bihar - 800001<br/>📞 +91 93040 10727<br/>📧 suvidhatour@gmail.com')
+                    .bindPopup('<strong>Suvidha Tour and Travels </strong><br/>Patna, Bihar - 800001<br/>📞 +91 93040 10727<br/>📧 suvidhatour@gmail.com')
                     .openPopup();
             }
             
@@ -44,7 +44,7 @@ function OpenStreetMap() {
             ref={mapRef}
             className="map-container bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             style={{ height: '24rem', width: '100%' }}
-            title="Suvidha Travels Location Map - OpenStreetMap - Patna, Bihar"
+            title="Suvidha Tour and Travels  Location Map - OpenStreetMap - Patna, Bihar"
         />
     );
 }
@@ -155,7 +155,7 @@ function Header({ dark, toggle }) {
                 className="h-12 w-12 rounded-full border-2 border-primary shadow-lg object-cover"
                 loading="lazy"
                 />
-                <h2 className="text-xl font-bold">Suvidha Travels</h2>
+                <h2 className="text-xl font-bold">Suvidha Tour and Travels </h2>
                 </a>
                 <nav className="hidden md:flex gap-8 text-sm font-medium">
                     <a href="index.html" className="hover:text-primary">Home</a>
@@ -202,10 +202,10 @@ function Hero() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 641);
 
     const phrases = [
-        'Explore The World With Suvidha Travels',
+        'Explore The World With Suvidha Tour and Travels ',
         'Ease Your Travel Experience ',
         'Travel Bhi , Masti Bhi',
-        'Safar ka Maza with Suvidha Travels '
+        'Safar ka Maza with Suvidha Tour and Travels  '
     ];
 
     useEffect(() => {
@@ -395,7 +395,7 @@ function WhyChoose() {
     return (
         <section className="py-20 bg-background-light dark:bg-background-dark">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Why Choose Suvidha Travels?</h2>
+                <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">Why Choose Suvidha Tour and Travels ?</h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 text-center why-grid">
                     {items.map((f,i)=>(
                         <div key={i} className="lazy-load visible">
@@ -416,15 +416,15 @@ function AboutUs() {
     return (
         <section className="py-20 bg-white dark:bg-gray-900">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">About Suvidha Travels</h2>
+                <h2 className="text-3xl font-bold text-center mb-12 fade-in visible">About Suvidha Tour and Travels </h2>
                 <div className="about-grid">
                     <div className="order-2 lg:order-1">
-                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 fade-in visible">Based in the heart of Patna, Bihar, Suvidha Travels has been your trusted partner in crafting unforgettable journeys since 2010. Our passionate team of travel experts specializes in personalized itineraries that blend adventure, luxury, and cultural immersion. From the serene hills of Kashmir to the vibrant streets of Dubai, we ensure every trip is seamless and extraordinary.</p>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 fade-in visible">Based in the heart of Patna, Bihar, Suvidha Tour and Travels  has been your trusted partner in crafting unforgettable journeys since 2010. Our passionate team of travel experts specializes in personalized itineraries that blend adventure, luxury, and cultural immersion. From the serene hills of Kashmir to the vibrant streets of Dubai, we ensure every trip is seamless and extraordinary.</p>
                         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 fade-in visible">With a commitment to sustainability and local empowerment, we partner with communities worldwide to create meaningful experiences. Join thousands of satisfied travelers who have discovered the world with us.</p>
                         <a href="https://wa.me/+919304010727?text=Hi%20there!%20I%E2%80%99m%20interested%20in%20learning%20more%20about%20Suvidha%20Travels%20and%20your%20travel%20services.%20Could%20you%20please%20share%20more%20details?%20Thank%20you!" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors fade-in visible inline-block">Learn More</a>
                     </div>
                     <div className="order-1 lg:order-2">
-                        <img src="images/tposter.webp" alt="About Suvidha Travels" className="about-img w-full h-full object-cover lazy-load visible" loading="lazy" />
+                        <img src="images/tposter.webp" alt="About Suvidha Tour and Travels " className="about-img w-full h-full object-cover lazy-load visible" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -475,7 +475,7 @@ function Contact() {
                             <div>
                                 <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Address:</h4>
                                 <a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-primary hover:underline block">
-                                    Suvidha Travels<br />
+                                    Suvidha Tour and Travels <br />
                                     5TH FLOOR, 512, JAGAT TRADE CENTRE,<br />
                                     FRAZER ROAD, PATNA, BIHAR - 800001<br />
                                     India
@@ -508,7 +508,7 @@ function Footer() {
             <div className="container mx-auto px-4">
                 <div className="footer-top">
                     <div>
-                        <h3 className="text-lg font-bold mb-4">Suvidha Travels</h3>
+                        <h3 className="text-lg font-bold mb-4">Suvidha Tour and Travels </h3>
                         <p className="text-sm text-gray-400 mb-4">Based in Patna, Bihar. Unforgettable experiences since 2010. Your journey, our passion.</p>
                         <div className="flex gap-4">
                             <a
@@ -573,7 +573,7 @@ function Footer() {
                             <li><a href="https://maps.app.goo.gl/czoQegqAcFLL4fsR9" 
                             target="_blank"
                             className="hover:underline ml-1">
-                            Suvidha Travels<br />
+                            Suvidha Tour and Travels <br />
                             5th floor, 512, Jagat Trade center, Frazer Road, Patna, Bihar - 800001, India
                             </a></li>
                             <li><a href="mailto:suvidhatour@gmail.com" 
@@ -590,7 +590,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="footer-bottom">
-                    <p className="text-sm text-white-500">© 2025 Suvidha Travels. All Rights Reserved.</p>
+                    <p className="text-sm text-white-500">© 2025 Suvidha Tour and Travels . All Rights Reserved.</p>
                     <div className="flex gap-4 text-sm text-white-500">
                         <a href="#" className="hover:text-blue transition-colors">Designed by Ignius Studios</a>
                     </div>
